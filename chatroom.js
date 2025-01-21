@@ -32,6 +32,17 @@ document.getElementById('messageInput').addEventListener('keypress', function (e
     }
 });
 
+function formatTime(timestamp) {
+    const date = new Date(timestamp);
+    let hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const period = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // Adjust hours for 12-hour format
+
+    return `${hours}:${minutes} ${period}`;
+}
+
 function sendMessage() {
     const messageInput = document.getElementById('messageInput');
     const message = messageInput.value.trim();
@@ -48,7 +59,11 @@ function sendMessage() {
             messageClass = 'received';  // Set class to 'received' for agent messages
         }
 
-        // Create the content with the username and message
+        // Get current time and format it
+        const timestamp = Date.now();
+        const formattedTime = formatTime(timestamp);
+
+        // Create the content with the username, message, and time
         const messageContent = document.createElement('div');
         messageContent.classList.add('message-content');
 
@@ -59,8 +74,13 @@ function sendMessage() {
         const messageText = document.createElement('span');
         messageText.textContent = message;
 
+        const messageTime = document.createElement('span');
+        messageTime.classList.add('message-time');
+        messageTime.textContent = formattedTime;  // Add time
+
         messageContent.appendChild(username);
         messageContent.appendChild(messageText);
+        messageContent.appendChild(messageTime);  // Append time
 
         messageContainer.classList.add(messageClass);  // Add class based on sender
         messageContainer.appendChild(messageContent);
@@ -73,7 +93,7 @@ function sendMessage() {
         push(messagesRef, {
             sender: senderName,
             message: message,
-            timestamp: Date.now()
+            timestamp: timestamp
         });
 
         messageInput.value = '';  // Clear input field
@@ -103,8 +123,14 @@ onValue(messagesRef, (snapshot) => {
         const messageText = document.createElement('span');
         messageText.textContent = message.message;
 
+        // Get the formatted time for each message
+        const messageTime = document.createElement('span');
+        messageTime.classList.add('message-time');
+        messageTime.textContent = formatTime(message.timestamp);  // Format timestamp
+
         messageContent.appendChild(username);
         messageContent.appendChild(messageText);
+        messageContent.appendChild(messageTime);  // Append time to message
 
         messageContainer.appendChild(messageContent);
         messagesContainer.appendChild(messageContainer);
@@ -113,7 +139,3 @@ onValue(messagesRef, (snapshot) => {
     // Auto-scroll to the bottom when new messages are added
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 });
-
-
-
-

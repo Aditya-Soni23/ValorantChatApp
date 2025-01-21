@@ -101,3 +101,11 @@ body {
 .username {
     font-weight: bold;
 }
+
+.message-time {
+    font-size: 0.7rem;  /* Smaller font size */
+    font-weight: lighter;  /* Lighter font weight */
+    color: rgb(0, 0, 0);  /* Lighter color to make it less prominent */
+    margin-top: 5px;
+    display: block; /* Ensure the time is below the message */
+}
