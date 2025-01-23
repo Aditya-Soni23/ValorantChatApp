@@ -101,6 +101,34 @@ function sendMessage() {
     }
 }
 
+// Create a single Audio object
+// Create a single Audio object
+const notificationAudio = new Audio('ace.mp3'); // Adjust the path as needed
+
+// Cooldown flag and duration
+let notificationCooldown = false;
+const cooldownDuration = 10000; // Cooldown duration in milliseconds (1 second)
+
+function playNotificationSound() {
+    if (notificationCooldown) return; // Don't play if cooldown is active
+
+    // Reset the audio to the beginning before playing
+    notificationAudio.currentTime = 0;
+    notificationAudio.play().catch((error) => {
+        console.error('Sound playback failed:', error);
+    });
+
+    // Activate the cooldown
+    notificationCooldown = true;
+    setTimeout(() => {
+        notificationCooldown = false; // Reset cooldown after the duration
+    }, cooldownDuration);
+}
+
+
+
+
+
 // Fetch messages from Firebase and display in chat
 const messagesRef = ref(db, 'messages');
 onValue(messagesRef, (snapshot) => {
@@ -134,8 +162,16 @@ onValue(messagesRef, (snapshot) => {
 
         messageContainer.appendChild(messageContent);
         messagesContainer.appendChild(messageContainer);
+        playNotificationSound();
     }
 
     // Auto-scroll to the bottom when new messages are added
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 });
+
+
+
+
+
+
+
