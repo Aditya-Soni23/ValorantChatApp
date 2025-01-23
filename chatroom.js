@@ -175,3 +175,118 @@ onValue(messagesRef, (snapshot) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let localStream; // Local user's audio stream
+let peerConnection; // Peer-to-peer connection
+let isInVoiceChat = false; // Flag to check if the user is in voice chat
+
+const joinVoiceChatBtn = document.getElementById("joinVoiceChatBtn");
+const voiceChatStatus = document.getElementById("voiceChatStatus");
+
+const mediaConstraints = {
+  audio: true, // Only audio
+  video: false // No video
+};
+
+// Handle joining voice chat
+joinVoiceChatBtn.addEventListener("click", () => {
+  if (!isInVoiceChat) {
+    startVoiceChat();
+  } else {
+    leaveVoiceChat();
+  }
+});
+
+// Function to start the voice chat
+async function startVoiceChat() {
+  try {
+    // Request user's microphone stream
+    localStream = await navigator.mediaDevices.getUserMedia(mediaConstraints);
+
+    // Set up the connection to other users
+    setupPeerConnection();
+
+    // Change the button text and status
+    joinVoiceChatBtn.textContent = "Leave Voice Chat";
+    voiceChatStatus.textContent = "You are in voice chat";
+
+    isInVoiceChat = true;
+  } catch (error) {
+    console.error("Error accessing microphone: ", error);
+  }
+}
+
+// Function to leave the voice chat
+function leaveVoiceChat() {
+  // Stop the local audio stream
+  localStream.getTracks().forEach(track => track.stop());
+
+  // Close the peer connection
+  if (peerConnection) {
+    peerConnection.close();
+  }
+
+  // Change the button text and status
+  joinVoiceChatBtn.textContent = "Join Voice Chat";
+  voiceChatStatus.textContent = "You are not in voice chat";
+
+  isInVoiceChat = false;
+}
+
+// Function to set up the peer connection
+function setupPeerConnection() {
+  peerConnection = new RTCPeerConnection();
+
+  // Add local stream to peer connection
+  localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+  // Handle remote stream (incoming audio)
+  peerConnection.ontrack = (event) => {
+    const remoteAudio = document.createElement('audio');
+    remoteAudio.srcObject = event.streams[0];
+    remoteAudio.autoplay = true;
+    document.body.appendChild(remoteAudio);
+  };
+
+  // Handle ICE candidates for the peer-to-peer connection
+  peerConnection.onicecandidate = (event) => {
+    if (event.candidate) {
+      // Send candidate to remote peers through your signaling server (not implemented here)
+      console.log("New ICE Candidate: ", event.candidate);
+    }
+  };
+
+  // Optionally handle other WebRTC events (like connection state changes, etc.)
+}
+
+// Function to initiate the WebRTC handshake (Signaling)
+function initiateSignaling() {
+  // This would normally be done with a signaling server to exchange offer/answer and ICE candidates.
+  // Here, we’re keeping it simple and just preparing to handle it.
+  console.log("Set up signaling server to exchange offers and candidates.");
+}
