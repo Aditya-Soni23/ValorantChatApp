@@ -1,6 +1,5 @@
 /* Existing body and layout styles */
 body {
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -8,6 +7,43 @@ body {
     height: 100vh;
     margin: 0;
     color: white;
+}
+/* Full-page styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Video background */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Places the video behind all other content */
+    overflow: hidden;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video fills the screen without distortion */
+}
+
+/* Add a fading overlay */
+.video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Slight dark overlay for readability */
+    z-index: -1; /* Overlay sits above video, but behind other content */
 }
 
 /* Header with image and text on the top-right */
@@ -41,7 +77,24 @@ body {
     text-align: center;
     width: 400px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+
+
 }
+.login-container {
+    position: relative; /* Necessary for pseudo-element positioning */
+}
+
+.login-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px; /* Border thickness */
+    border-radius: 30px;
+    background: linear-gradient(to bottom right, #ff5ac0, #ffea00); /* Gradient */
+}
+
 
 h1 {
     font-size: 2rem;
