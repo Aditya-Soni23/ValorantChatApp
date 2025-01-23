@@ -48,93 +48,93 @@ function sendMessage() {
     const message = messageInput.value.trim();
 
     if (message) {
-        const messageContainer = document.createElement('div');
-        messageContainer.classList.add('message');
-
-        let senderName = 'User';  // Default is 'User'
-        let messageClass = 'sent'; // Default class for user messages
-
-        if (loggedInAgent) {
-            senderName = loggedInAgent;  // Set to agent name if logged in
-            messageClass = 'received';  // Set class to 'received' for agent messages
-        }
-
-        // Get current time and format it
         const timestamp = Date.now();
-        const formattedTime = formatTime(timestamp);
-
-        // Create the content with the username, message, and time
-        const messageContent = document.createElement('div');
-        messageContent.classList.add('message-content');
-
-        const username = document.createElement('span');
-        username.classList.add('username');
-        username.textContent = `${senderName}: `;
-
-        const messageText = document.createElement('span');
-        messageText.textContent = message;
-
-        const messageTime = document.createElement('span');
-        messageTime.classList.add('message-time');
-        messageTime.textContent = formattedTime;  // Add time
-
-        messageContent.appendChild(username);
-        messageContent.appendChild(messageText);
-        messageContent.appendChild(messageTime);  // Append time
-
-        messageContainer.classList.add(messageClass);  // Add class based on sender
-        messageContainer.appendChild(messageContent);
-
-        const messages = document.getElementById('messages');
-        messages.appendChild(messageContainer);
 
         // Save message to Firebase Realtime Database
         const messagesRef = ref(db, 'messages');
         push(messagesRef, {
-            sender: senderName,
+            sender: loggedInAgent || 'User', // Default to 'User' if not logged in
             message: message,
             timestamp: timestamp
         });
 
-        messageInput.value = '';  // Clear input field
-        messages.scrollTop = messages.scrollHeight;  // Auto-scroll to the bottom
+        messageInput.value = ''; // Clear input field
+        checkForAgent(message.toLowerCase()); // Check for agent in the message
     }
 }
 
-// Create a single Audio object
-// Create a single Audio object
-const notificationAudio = new Audio('ace.mp3'); // Adjust the path as needed
+// Fetch agent description from Firebase and send the response
+function fetchAgentDescription(agentName) {
+    const agentRef = ref(db, `agents/${agentName}`);
 
-// Cooldown flag and duration
-let notificationCooldown = false;
-const cooldownDuration = 10000; // Cooldown duration in milliseconds (1 second)
+    onValue(agentRef, (snapshot) => {
+        const agent = snapshot.val();
 
-function playNotificationSound() {
-    if (notificationCooldown) return; // Don't play if cooldown is active
-
-    // Reset the audio to the beginning before playing
-    notificationAudio.currentTime = 0;
-    notificationAudio.play().catch((error) => {
-        console.error('Sound playback failed:', error);
+        if (agent && agent.description) {
+            sendAgentDescription(agentName, agent.description);
+        } else {
+            console.log(`No description found for ${agentName}.`);
+        }
     });
-
-    // Activate the cooldown
-    notificationCooldown = true;
-    setTimeout(() => {
-        notificationCooldown = false; // Reset cooldown after the duration
-    }, cooldownDuration);
 }
 
+// Send the agent description message to the chat and save it to Firebase
+function sendAgentDescription(agentName, description) {
+    const audio = new Audio('gekko.mp3');
+    audio.play()
+    const botMessage = `Here's what I know about ${agentName}: ${description}`;
 
+    // Push the bot's response to Firebase
+    const messagesRef = ref(db, 'messages');
+    push(messagesRef, {
+        sender: 'Gekko', // Bot's name
+        message: botMessage,
+        timestamp: Date.now() // Current timestamp
+    });
+}
 
+// Check if any agent name is mentioned in the message
+function checkForAgent(messageText) {
+    const agentNames = [
+        "jett",
+        "phoenix",
+        "yoru",
+        "self", // Gekko
+        "brimstone",
+        "sage",
+        "sova",
+        "viper",
+        "cypher",
+        "reyna",
+        "killjoy",
+        "raze",
+        "omen",
+        "breach",
+        "skye",
+        "astra",
+        "kay/o",
+        "chamber",
+        "neon",
+        "fade",
+        "harbor"
+    ];
+     // Add more agents as needed
+    console.log(`Checking message: ${messageText}`); // Debugging
 
+    agentNames.forEach(agentName => {
+        if (messageText.includes(agentName)) {
+            console.log(`Found agent: ${agentName}`); // Debugging
+            fetchAgentDescription(agentName); // Fetch and show agent description
+        }
+    });
+}
 
 // Fetch messages from Firebase and display in chat
 const messagesRef = ref(db, 'messages');
 onValue(messagesRef, (snapshot) => {
     const messages = snapshot.val();
     const messagesContainer = document.getElementById('messages');
-    messagesContainer.innerHTML = '';  // Clear previous messages
+    messagesContainer.innerHTML = ''; // Clear previous messages
 
     for (const messageId in messages) {
         const message = messages[messageId];
@@ -151,61 +151,89 @@ onValue(messagesRef, (snapshot) => {
         const messageText = document.createElement('span');
         messageText.textContent = message.message;
 
-        // Get the formatted time for each message
         const messageTime = document.createElement('span');
         messageTime.classList.add('message-time');
-        messageTime.textContent = formatTime(message.timestamp);  // Format timestamp
+        messageTime.textContent = formatTime(message.timestamp); // Format timestamp
 
         messageContent.appendChild(username);
         messageContent.appendChild(messageText);
-        messageContent.appendChild(messageTime);  // Append time to message
+        messageContent.appendChild(messageTime); // Append time to message
 
         messageContainer.appendChild(messageContent);
         messagesContainer.appendChild(messageContainer);
-        playNotificationSound();
     }
 
     // Auto-scroll to the bottom when new messages are added
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 });
 
+// Reference to the Firebase Realtime Database where agent data will be stored
+const agentRef = ref(db, 'agents/');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Google Meet link (you can replace this with your dynamic link generation logic)
-const meetLink = "https://meet.google.com/eyk-icws-stk"; // Replace with your meeting link
-
-const joinVoiceChatBtn = document.getElementById("joinVoiceChatBtn");
-
-joinVoiceChatBtn.addEventListener("click", function () {
-    window.open(meetLink, "_blank");
+// Add agent descriptions
+set(agentRef, {
+    jett: {
+        description: "Jett is a duelist agent known for her mobility and high damage output."
+    },
+    phoenix: {
+        description: "Phoenix is a duelist who specializes in self-sustain and area denial."
+    },
+    yoru: {
+        description: "Yoru is a duelist who can teleport and create decoys to confuse enemies."
+    },
+    self: {
+        description: "Gekko is a controller who can use his abilities to disrupt and control the battlefield."
+    },
+    brimstone: {
+        description: "Joining from the U.S.A., Brimstone's orbital arsenal ensures his squad always has the advantage. His ability to deliver utility precisely and safely make him the unmatched boots-on-the-ground commander."
+    },
+    sage: {
+        description: "Sage creates safety for herself and her team wherever she goes. Able to revive fallen friends and stave off forceful assaults, she provides a calm center to a hellish battlefield."
+    },
+    sova: {
+        description: "Born from the eternal winter of Russia's tundra, Sova tracks, finds, and eliminates enemies with ruthless efficiency and precision. His custom bow and incredible scouting abilities ensure that even if you run, you cannot hide."
+    },
+    viper: {
+        description: "The American chemist, Viper, deploys an array of poisonous chemical devices to control the battlefield and cripple the enemy's vision. If the toxins don't kill her prey, her mind games surely will."
+    },
+    cypher: {
+        description: "Cypher is a one-man surveillance network who keeps tabs on the enemy's every move. No secret is safe. No maneuver goes unseen. Cypher is always watching."
+    },
+    reyna: {
+        description: "Forged in the heart of Mexico, Reyna dominates single combat, popping off with each kill she scores. Her capability is only limited by her raw skill, making her highly dependent on performance."
+    },
+    killjoy: {
+        description: "The genius from Germany, Killjoy secures the battlefield with ease using her arsenal of inventions. If the damage from her gear doesn’t stop her enemies, the debuff her robots deliver will help her crush them."
+    },
+    raze: {
+        description: "Raze explodes out of Brazil with her big personality and even bigger guns. With her blunt-force-trauma playstyle, she excels at flushing entrenched enemies and clearing tight spaces with a generous dose of boom."
+    },
+    omen: {
+        description: "A phantom of a memory, Omen hunts in the shadows. He renders enemies blind, teleports across the field, then lets paranoia take hold as his foe scrambles to uncover where he might strike next."
+    },
+    breach: {
+        description: "Breach, the bionic Swede, fires powerful, targeted kinetic blasts to aggressively clear a path through enemy ground. The damage and disruption he inflicts ensures no fight is ever fair."
+    },
+    skye: {
+        description: "Hailing from Australia, Skye and her band of beasts trail-blaze the way through hostile territory. With her creations hampering the enemy and her power to heal others, the team is strongest and safest by Skye’s side."
+    },
+    astra: {
+        description: "Ghanaian agent Astra harnesses the energies of the cosmos to reshape battlefields to her whim. With full command of her astral form and a talent for deep strategic foresight, she always eviscerates her enemies’ plans."
+    },
+    kayo: {
+        description: "KAY/O is a machine of war built for a single purpose: neutralizing radiants. His power to suppress enemy abilities cripples his opponents' capacity to fight back, securing him and his allies the ultimate edge."
+    },
+    chamber: {
+        description: "Well-dressed and well-armed, French weapons designer Chamber deploys deadly precision to take out targets from afar. With a contingency built for every plan, he outmaneuvers any play his enemies make."
+    },
+    neon: {
+        description: "Hailing from Manila in the Philippines, Neon surges forward at shocking speeds, discharging bursts of bioelectric radiance as fast as her body generates it. She races ahead to catch enemies off guard, then strikes them down quicker than lightning."
+    },
+    fade: {
+        description: "Turkish bounty hunter Fade unleashes the power of raw nightmare to seize enemy secrets. Revealing their deepest fears, she stalks down targets and finishes them off in the dark."
+    },
+    harbor: {
+        description: "Hailing from India’s coast, Harbor storms the field wielding ancient technology with dominion over water. He unleashes frothing rapids and crushing waves to shield his allies and pummel those that oppose him."
+    }
 });
+
