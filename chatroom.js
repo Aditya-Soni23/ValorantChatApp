@@ -427,6 +427,9 @@ document.getElementById("logoutButton").addEventListener("click", function() {
 });
 
 
+document.getElementById("joinVoiceChatBtn").addEventListener("click", function() {
+    window.open("https://meet.google.com/cdg-ntnc-gyv", "_blank");
+});
 
 
 
