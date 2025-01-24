@@ -139,12 +139,6 @@ body {
     display: block; /* Ensure the time is below the message */
 }
 
-
-
-
-
-
-
 /* Side Panel */
 .side-panel {
     width: 300px;
@@ -179,4 +173,28 @@ body {
 .agent-info {
     display: flex;
     align-items: center;
+}
+
+
+/* Gekko's messages only */
+.message.gekko-message {
+    background-color: #fff9c4; /* Light yellow background */
+    border: 2px solid #ffc107; /* Yellow border */
+    font-weight: bold; /* Bold text */
+    text-align: left;
+    margin-right: auto;
+}
+
+/* Optional: Highlight text within Gekko's messages (e.g., agent description) */
+.message.gekko-message .message-content {
+    font-style: italic;
+    color: #5d4037; /* Darker text color for contrast */
+}
+.gekko-icon {
+    width: 24px; /* Icon width */
+    height: 24px; /* Icon height */
+    margin-right: 8px; /* Space between the icon and text */
+    vertical-align: middle; /* Align icon with text */
+    border-radius: 50%; /* Circular icon */
+    border: 2px solid #ffc107; /* Optional border for styling */
 }

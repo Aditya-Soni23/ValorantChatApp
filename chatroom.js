@@ -159,7 +159,34 @@ onValue(messagesRef, (snapshot) => {
     for (const messageId in messages) {
         const message = messages[messageId];
         const messageContainer = document.createElement('div');
-        messageContainer.classList.add('message', message.sender === loggedInAgent ? 'received' : 'sent');
+
+
+
+
+
+        if (message.sender === 'Gekko') {
+            messageContainer.classList.add('message', 'gekko-message'); // Only Gekko's messages get this extra class
+        
+            // Create an img element for Gekko's icon
+            const gekkoIcon = document.createElement('img'); // Use a descriptive name like `gekkoIcon`
+            gekkoIcon.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDLwtTIc20YCHrG4LXpngr_oZP-ueLH_yjCg&s'; // Replace with the actual path to your Gekko icon
+            gekkoIcon.alt = 'Gekko';
+            gekkoIcon.classList.add('gekko-icon'); // Add a class for Gekko's icon styling
+        
+            // Prepend the icon to Gekko's message
+            messageContainer.prepend(gekkoIcon); // Use the variable `gekkoIcon` correctly
+        } else if (message.sender === loggedInAgent) {
+            messageContainer.classList.add('message', 'received');
+        } else {
+            messageContainer.classList.add('message', 'sent');
+        }
+        
+        
+
+
+
+        
+        
 
         const messageContent = document.createElement('div');
         messageContent.classList.add('message-content');
