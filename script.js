@@ -64,6 +64,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     if (agentPasswords[agent] === password) {
         // Store the logged-in agent's name in sessionStorage
         sessionStorage.setItem('loggedInAgent', agent);
+        localStorage.setItem('loggedInAgent', agent); // This stores the agent in localStorage
 
         alert(`Successfully logged in as ${agent}! Redirecting to chatroom...`);
 
@@ -73,20 +74,17 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         alert("Wrong password. Please try again.");
     }
 });
+
+
 document.addEventListener("DOMContentLoaded", function() {
-    // Check if the user is already logged in (by looking for loggedInAgent in localStorage)
+    // Check if the user is already logged in by looking for loggedInAgent in localStorage
     const loggedInAgent = localStorage.getItem('loggedInAgent');
-    console.log("Logged-in agent:", loggedInAgent);  // This should show a string, not [object HTMLSelectElement]
+    console.log("Logged-in agent:", loggedInAgent);  // Debugging: Check what is stored
 
     if (loggedInAgent) {
-        const storedPassword = agentPasswords[loggedInAgent];  // Ensure agentPasswords is defined and holds correct passwords
-        
-        if (storedPassword) {
-            alert(`Welcome back, ${loggedInAgent}! Redirecting to chatroom...`);
-            sessionStorage.setItem('loggedInAgent', loggedInAgent);  // Correctly set logged-in agent
-            window.location.href = "chatroom.html"; // Redirect to the chatroom
-        } else {
-            localStorage.removeItem('loggedInAgent');  // Clear localStorage if agent not found
-        }
+        // If the agent is found in localStorage, redirect to the chatroom
+        alert(`Welcome back, ${loggedInAgent}! Redirecting to chatroom...`);
+        sessionStorage.setItem('loggedInAgent', loggedInAgent);  // Set the agent for the session
+        window.location.href = "chatroom.html"; // Redirect to the chatroom
     }
 });
