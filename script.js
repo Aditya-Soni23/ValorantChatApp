@@ -46,28 +46,51 @@ const agentPasswords = {
     "Neon": "sprint34" // Neon password
 };
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Check if the user is already logged in (by looking for loggedInAgent in localStorage)
+    const loggedInAgent = localStorage.getItem('loggedInAgent');
+    console.log("Logged-in agent:", loggedInAgent);  // This should show a string, not [object HTMLSelectElement]
+
+    if (loggedInAgent) {
+        const storedPassword = agentPasswords[loggedInAgent];  // Ensure agentPasswords is defined and holds correct passwords
+        
+        if (storedPassword) {
+            sessionStorage.setItem('loggedInAgent', loggedInAgent);  // Correctly set logged-in agent
+            window.location.href = "chatroom.html"; // Redirect to the chatroom
+        } else {
+            localStorage.removeItem('loggedInAgent');  // Clear localStorage if agent not found
+        }
+    }
+});
+
+
+// Handle login form submission
 document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevents the form from submitting and reloading the page
+    event.preventDefault();  // Prevents the form from submitting and reloading the page
 
     const agent = document.getElementById("agent").value;
     const password = document.getElementById("password").value;
+    const keepMeSignedIn = document.getElementById("keepMeSignedIn").checked;
 
-    console.log(`Agent: ${agent}, Password: ${password}`); // Debugging
-
-    // Check if the agent and password are valid
+    // Validate if the agent and password are provided
     if (!agent || !password) {
         alert("Please select an agent and enter a password.");
         return;
     }
 
-    // Compare the entered password with the stored password
+    // Check if the entered password is correct for the selected agent
     if (agentPasswords[agent] === password) {
-        // Store the logged-in agent's name in sessionStorage
+        // Store the logged-in agent's name in sessionStorage for this session
         sessionStorage.setItem('loggedInAgent', agent);
+
+        // If "Keep Me Signed In" is checked, store the agent info in localStorage for future visits
+        if (keepMeSignedIn) {
+            localStorage.setItem('loggedInAgent', agent);
+        }
 
         alert(`Successfully logged in as ${agent}! Redirecting to chatroom...`);
 
-        // Redirect to the chatroom (you can change the URL as needed)
+        // Redirect to the chatroom (change the URL if needed)
         window.location.href = "chatroom.html"; // replace with the actual chatroom URL
     } else {
         alert("Wrong password. Please try again.");

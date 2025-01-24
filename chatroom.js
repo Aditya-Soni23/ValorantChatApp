@@ -237,3 +237,12 @@ set(agentRef, {
     }
 });
 
+// Logout functionality
+document.getElementById("logoutButton").addEventListener("click", function() {
+    // Clear both localStorage and sessionStorage to remove logged-in agent
+    localStorage.removeItem('loggedInAgent');
+    sessionStorage.removeItem('loggedInAgent');
+
+    // Redirect the user back to the login page
+    window.location = "index.html"; // Update the path if your login page URL differs
+});
