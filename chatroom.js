@@ -116,7 +116,10 @@ function checkForAgent(messageText) {
         "chamber",
         "neon",
         "fade",
-        "harbor"
+        "harbor",
+        "deadlock",
+        "clove",
+        "tejo"
     ];
      // Add more agents as needed
     console.log(`Checking message: ${messageText}`); // Debugging
@@ -234,6 +237,15 @@ set(agentRef, {
     },
     harbor: {
         description: "Hailing from India’s coast, Harbor storms the field wielding ancient technology with dominion over water. He unleashes frothing rapids and crushing waves to shield his allies and pummel those that oppose him."
+    },
+    deadlock: {
+        description:"Deadlock is a Sentinel agent from Norway who uses advanced technology to control the battlefield. Her abilities include blocking enemy advances and protecting her team with strategic gadgets."
+    },
+    clove: {
+        description:"Clove is a young Scottish agent possessing unprecedented powers among Radiants, specifically the ability to control the essences of life and immortality. This unique skill set makes Clove a formidable presence on the battlefield."
+    },
+    tejo: {
+        description:"Tejo, hailing from Colombia, is an Initiator agent introduced in January 2025. His kit emphasizes flushing out enemies using a top-down approach, requiring proactive and strategic thinking to clear paths for his team."
     }
 });
 
@@ -246,3 +258,25 @@ document.getElementById("logoutButton").addEventListener("click", function() {
     // Redirect the user back to the login page
     window.location = "index.html"; // Update the path if your login page URL differs
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
