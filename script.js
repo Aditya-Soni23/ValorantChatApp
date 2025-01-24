@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (loggedInAgent) {
         // If the agent is found in localStorage, redirect to the chatroom
-        alert(`Welcome back, ${loggedInAgent}! Redirecting to chatroom...`);
         sessionStorage.setItem('loggedInAgent', loggedInAgent);  // Set the agent for the session
         window.location.href = "chatroom.html"; // Redirect to the chatroom
     }

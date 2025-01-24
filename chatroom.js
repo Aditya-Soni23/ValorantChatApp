@@ -82,7 +82,7 @@ function fetchAgentDescription(agentName) {
 function sendAgentDescription(agentName, description) {
     const audio = new Audio('gekko.mp3');
     audio.play()
-    const botMessage = `Here's what I know about ${agentName}: ${description}`;
+    const botMessage = ` ${agentName}: ${description}`;
 
     // Push the bot's response to Firebase
     const messagesRef = ref(db, 'messages');
@@ -119,7 +119,9 @@ function checkForAgent(messageText) {
         "harbor",
         "deadlock",
         "clove",
-        "tejo"
+        "tejo",
+        "hi",
+        "wrud"
     ];
      // Add more agents as needed
     console.log(`Checking message: ${messageText}`); // Debugging
@@ -246,6 +248,12 @@ set(agentRef, {
     },
     tejo: {
         description:"Tejo, hailing from Colombia, is an Initiator agent introduced in January 2025. His kit emphasizes flushing out enemies using a top-down approach, requiring proactive and strategic thinking to clear paths for his team."
+    },
+    hi: {
+        description:"hello my guy!"
+    },
+    wrud: {
+        description:"planting the spike!"
     }
 });
 
