@@ -121,7 +121,22 @@ function checkForAgent(messageText) {
         "clove",
         "tejo",
         "hi",
-        "wrud"
+        "wrud",
+        "play",
+"help",
+"scout",
+"win",
+"favorite",
+"ready",
+"chaos",
+"control",
+"hello", "team", "push",
+ "defend", "enemy", "attack", "flash", "cover",
+  "hold", "move", "smoke", "clear", "watch", "rotate",
+   "plant", "defuse", "clutch", "nice", "boost", "peek",
+   "lunch", "chill", "work", "study", "movie", "plans", "hangout", "text", "coffee", "weekend"
+
+
     ];
      // Add more agents as needed
     console.log(`Checking message: ${messageText}`); // Debugging
@@ -254,7 +269,124 @@ set(agentRef, {
     },
     wrud: {
         description:"planting the spike!"
+    },
+    play: {
+        description: "Ready to go! Let's win this round!"
+    },
+    help: {
+        description: "I'm always ready to assist. Let me know what you need!"
+    },
+    scout: {
+        description: "I'm out scouting for enemies, stay close!"
+    },
+    win: {
+        description: "Let's win this round, team!"
+    },
+    favorite: {
+        description: "I love every map, but Icebox is where I really shine!"
+    },
+    ready: {
+        description: "I'm always ready, let's do this!"
+    },
+    chaos: {
+        description: "Born from chaos, I'm ready for anything!"
+    },
+    control: {
+        description: "I disrupt the battlefield and control the chaos!"
+    },
+    hello: {
+        description: "What's up? Ready to dominate!"
+    },
+    team: {
+        description: "Let's stick together and win this!"
+    },
+    push: {
+        description: "Let's push forward and make some noise!"
+    },
+    defend: {
+        description: "I'm holding the line, no one gets through!"
+    },
+    enemy: {
+        description: "Enemies spotted, watch out!"
+    },
+    attack: {
+        description: "Time to attack, let's do it!"
+    },
+    flash: {
+        description: "Flashing, eyes on the target!"
+    },
+    cover: {
+        description: "Covering you, go for the kill!"
+    },
+    hold: {
+        description: "Hold your position, don't let them push!"
+    },
+    move: {
+        description: "Moving out, stay close!"
+    },
+    smoke: {
+        description: "Smoking the area, stay behind!"
+    },
+    clear: {
+        description: "All clear, move forward!"
+    },
+    watch: {
+        description: "Watch your back, they might be sneaking!"
+    },
+    rotate: {
+        description: "Rotating to another site, follow me!"
+    },
+    plant: {
+        description: "I'm planting the spike, cover me!"
+    },
+    defuse: {
+        description: "I'm defusing, protect me!"
+    },
+    clutch: {
+        description: "Clutch play, I got this!"
+    },
+    nice: {
+        description: "Nice job, team! Let's keep it up!"
+    },
+    boost: {
+        description: "Boosting, get ready for the advantage!"
+    },
+    peek: {
+        description: "Peeking, get ready to strike!"
+    },
+    lunch: {
+        description: "Let's grab some lunch, I'm starving!"
+    },
+    chill: {
+        description: "Just chilling, what about you?"
+    },
+    work: {
+        description: "Got some work to do, but I'll take a break soon."
+    },
+    study: {
+        description: "Studying hard, gotta pass that test!"
+    },
+    movie: {
+        description: "Let's watch a movie later, got any suggestions?"
+    },
+    plans: {
+        description: "Got any plans for the day?"
+    },
+    hangout: {
+        description: "Let's hang out sometime this weekend!"
+    },
+    text: {
+        description: "I'll text you later, need to finish this first."
+    },
+    coffee: {
+        description: "I could really use a coffee right now!"
+    },
+    weekend: {
+        description: "Weekend vibes! What are you up to?"
     }
+    
+    
+    
 });
 
 // Logout functionality
