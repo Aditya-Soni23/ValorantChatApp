@@ -10,8 +10,8 @@ const agentPreviews = {
     "Viper": "https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2021/5/31/zxwpi7hkm1up0nd0p8lg/valorant-agent-viper", // Viper image URL (fill this in)
     "Sova": "https://img.redbull.com/images/c_crop,w_3840,h_1920,x_0,y_0/c_auto,w_1200,h_600/f_auto,q_auto/redbullcom/2021/4/14/lyuguphp3zyhcxdvyfat/valorant-sova", // Sova image URL (fill this in)
     "Cypher": "https://staticg.sportskeeda.com/editor/2023/05/50e4c-16851909040301-1920.jpg", // Cypher image URL (fill this in)
-    "Yoru": "https://cdn-wp.thesportsrush.com/2023/06/7dea8bd2-untitled-design-2023-06-05t224213.403.jpg?format=auto&w=3840&q=75", // Yoru image URL (fill this in)
-    "Clove": "https://imageio.forbes.com/specials-images/imageserve/65ff3fefa4d4cfc35a9fc1fe/The-key-art-for-Valorant-agent-Clove/960x0.jpg?format=jpg&width=960", // KAY/O image URL (fill this in)
+    "Yoru⭐": "https://cdn-wp.thesportsrush.com/2023/06/7dea8bd2-untitled-design-2023-06-05t224213.403.jpg?format=auto&w=3840&q=75", // Yoru image URL (fill this in)
+    "Clove🛠️": "https://imageio.forbes.com/specials-images/imageserve/65ff3fefa4d4cfc35a9fc1fe/The-key-art-for-Valorant-agent-Clove/960x0.jpg?format=jpg&width=960", // KAY/O image URL (fill this in)
     "Tejo": "https://xxboxnews.blob.core.windows.net/prod/sites/2/2024/12/VAL_XB_A27_XboxWireTejoKeyArt_3840x2160-91fcae4fd9539e78bca7.jpg", // Skye image URL (fill this in)
     "Neon": "https://cdn.mos.cms.futurecdn.net/sXdZCSF4UiwhsaJxLQ76xY-1200-80.png" // Neon image URL (fill this in)
 };
@@ -40,8 +40,8 @@ const agentPasswords = {
     "Viper": "toxic90", // Viper password
     "Sova": "archery67", // Sova password
     "Cypher": "location89", // Cypher password
-    "Yoru": "drift55", // Updated password for Yoru (please ensure it's correct)
-    "Clove": "revive23", // Clove password
+    "Yoru⭐": "drift55", // Updated password for Yoru (please ensure it's correct)
+    "Clove🛠️": "revive23", // Clove password
     "Tejo": "missile55", // Tejo password
     "Neon": "sprint34" // Neon password
 };
