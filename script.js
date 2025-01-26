@@ -39,7 +39,7 @@ const agentPasswords = {
     "Killjoy": "supress21", // Killjoy password
     "Viper": "toxic90", // Viper password
     "Sova": "archery67", // Sova password
-    "Cypher": "location89", // Cypher password
+    "Cypher": "position17", // Cypher password
     "Yoru⭐": "drift55", // Updated password for Yoru (please ensure it's correct)
     "Clove🛠️": "revive23", // Clove password
     "Tejo": "missile55", // Tejo password

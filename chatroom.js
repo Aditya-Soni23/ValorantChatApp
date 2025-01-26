@@ -60,6 +60,7 @@ function sendMessage() {
 
         messageInput.value = ''; // Clear input field
         checkForAgent(message.toLowerCase()); // Check for agent in the message
+        
     }
 }
 
@@ -156,37 +157,27 @@ onValue(messagesRef, (snapshot) => {
     const messagesContainer = document.getElementById('messages');
     messagesContainer.innerHTML = ''; // Clear previous messages
 
+    // Play notification sound
+    const notificationSound = new Audio('ace.mp3'); // Ensure correct path
+
     for (const messageId in messages) {
         const message = messages[messageId];
         const messageContainer = document.createElement('div');
 
-
-
-
-
         if (message.sender === 'Gekko') {
-            messageContainer.classList.add('message', 'gekko-message'); // Only Gekko's messages get this extra class
-        
-            // Create an img element for Gekko's icon
-            const gekkoIcon = document.createElement('img'); // Use a descriptive name like `gekkoIcon`
-            gekkoIcon.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDLwtTIc20YCHrG4LXpngr_oZP-ueLH_yjCg&s'; // Replace with the actual path to your Gekko icon
+            messageContainer.classList.add('message', 'gekko-message'); // Gekko's messages styling
+
+            const gekkoIcon = document.createElement('img');
+            gekkoIcon.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDLwtTIc20YCHrG4LXpngr_oZP-ueLH_yjCg&s';
             gekkoIcon.alt = 'Gekko';
-            gekkoIcon.classList.add('gekko-icon'); // Add a class for Gekko's icon styling
-        
-            // Prepend the icon to Gekko's message
-            messageContainer.prepend(gekkoIcon); // Use the variable `gekkoIcon` correctly
+            gekkoIcon.classList.add('gekko-icon');
+
+            messageContainer.prepend(gekkoIcon);
         } else if (message.sender === loggedInAgent) {
             messageContainer.classList.add('message', 'received');
         } else {
             messageContainer.classList.add('message', 'sent');
         }
-        
-        
-
-
-
-        
-        
 
         const messageContent = document.createElement('div');
         messageContent.classList.add('message-content');
@@ -204,15 +195,19 @@ onValue(messagesRef, (snapshot) => {
 
         messageContent.appendChild(username);
         messageContent.appendChild(messageText);
-        messageContent.appendChild(messageTime); // Append time to message
+        messageContent.appendChild(messageTime);
 
         messageContainer.appendChild(messageContent);
         messagesContainer.appendChild(messageContainer);
+
+        // Play the notification sound for each new message
+        notificationSound.play().catch((error) => console.warn('Audio playback failed:', error));
     }
 
     // Auto-scroll to the bottom when new messages are added
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 });
+
 
 // Reference to the Firebase Realtime Database where agent data will be stored
 const agentRef = ref(db, 'agents/');
