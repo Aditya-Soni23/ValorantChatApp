@@ -121,9 +121,7 @@ function checkForAgent(messageText) {
         "deadlock",
         "clove",
         "tejo",
-        "hi",
         "wrud",
-        "play",
 "help",
 "scout",
 "win",
@@ -158,7 +156,7 @@ onValue(messagesRef, (snapshot) => {
     messagesContainer.innerHTML = ''; // Clear previous messages
 
     // Play notification sound
-    const notificationSound = new Audio('ace.mp3'); // Ensure correct path
+    //const notificationSound = new Audio('ace.mp3'); // Ensure correct path
 
     for (const messageId in messages) {
         const message = messages[messageId];
@@ -286,14 +284,8 @@ set(agentRef, {
     tejo: {
         description:"Tejo, hailing from Colombia, is an Initiator agent introduced in January 2025. His kit emphasizes flushing out enemies using a top-down approach, requiring proactive and strategic thinking to clear paths for his team."
     },
-    hi: {
-        description:"hello my guy!"
-    },
     wrud: {
         description:"planting the spike!"
-    },
-    play: {
-        description: "Ready to go! Let's win this round!"
     },
     help: {
         description: "I'm always ready to assist. Let me know what you need!"
