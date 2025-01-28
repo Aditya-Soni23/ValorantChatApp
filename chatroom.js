@@ -199,7 +199,7 @@ onValue(messagesRef, (snapshot) => {
         messagesContainer.appendChild(messageContainer);
 
         // Play the notification sound for each new message
-        notificationSound.play().catch((error) => console.warn('Audio playback failed:', error));
+        //notificationSound.play().catch((error) => console.warn('Audio playback failed:', error));
     }
 
     // Auto-scroll to the bottom when new messages are added
