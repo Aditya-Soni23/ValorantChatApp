@@ -440,3 +440,131 @@ window.addEventListener("click", (e) => {
         badgePopup.style.display = "none";
     }
 });
+
+
+const themebadgeButton = document.getElementById("themebadgeButton");
+const themebadgePopup = document.getElementById("themebadgePopup");
+const themeclosePopup = document.querySelector(".themeclose");
+
+// Show popup when button is clicked
+themebadgeButton.addEventListener("click", () => {
+    themebadgePopup.style.display = "flex";
+});
+
+// Hide popup when close button is clicked
+themeclosePopup.addEventListener("click", () => {
+    themebadgePopup.style.display = "none";
+});
+
+// Hide popup when clicking outside the content box
+window.addEventListener("click", (e) => {
+    if (e.target === badgePopup) {
+        themebadgePopup.style.display = "none";
+    }
+});
+
+
+// Get the buttons
+const theme1Button = document.getElementById("theme1");
+const theme2Button = document.getElementById("theme2");
+const theme3Button = document.getElementById("theme3");
+const theme4Button = document.getElementById("theme4");
+const theme5Button = document.getElementById("theme5");
+const theme6Button = document.getElementById("theme6");
+const theme7Button = document.getElementById("theme7");
+const theme8Button = document.getElementById("theme8");
+const theme9Button = document.getElementById("theme9");
+const theme10Button = document.getElementById("theme10");
+const theme11Button = document.getElementById("theme11");
+const theme12Button = document.getElementById("theme12");
+
+theme1Button.addEventListener("click", () => {
+    // Sunset Vibes
+    document.body.style.backgroundImage = "linear-gradient(to bottom right, #ff4b1f, #1fddff)";
+    document.querySelector('.header').style.backgroundImage = "linear-gradient(to bottom right, #2193b0, #6dd5ed)";
+    document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #ff9a9e, #fad0c4)";
+    document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #36d1dc, #5b86e5)";
+});
+
+theme2Button.addEventListener("click", () => {
+    // Ocean Blues
+    document.body.style.backgroundImage = "linear-gradient(to bottom right, #1e3c72, #2a5298)";
+    document.querySelector('.header').style.backgroundImage = "linear-gradient(to bottom right, #00c6ff, #0072ff)";
+    document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #30cfd0, #330867)";
+    document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #56ab2f, #a8e063)";
+});
+
+theme3Button.addEventListener("click", () => {
+    document.body.style.backgroundImage = "linear-gradient(to bottom right, #ff00ff, #00ffff)";
+    document.querySelector('.header').style.backgroundImage = "linear-gradient(to bottom right, #ff512f, #dd2476)";
+    document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #f12711, #f5af19)";
+    document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #12c2e9, #c471ed, #f64f59)";
+});
+
+
+theme4Button.addEventListener("click", () => {
+    document.body.style.backgroundImage = "linear-gradient(to bottom right, #232526, #414345)";
+    document.querySelector('.header').style.backgroundImage = "linear-gradient(to bottom right, #434343, #000000)";
+    document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #141e30, #243b55)";
+    document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #485563, #29323c)";
+});
+
+
+theme5Button.addEventListener("click", () => {
+    document.body.style.backgroundImage = "linear-gradient(to bottom right, #ffefba, #ffffff)";
+    document.querySelector('.header').style.backgroundImage = "linear-gradient(to bottom right, #f4c4f3, #fc67fa)";
+    document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #decba4, #3e5151)";
+    document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #c94b4b, #4b134f)";
+});
+
+
+theme6Button.addEventListener("click", () => {
+    document.body.style.backgroundImage = "linear-gradient(to bottom right, #fc4a1a, #f7b733)";
+    document.querySelector('.header').style.backgroundImage = "linear-gradient(to bottom right, #ff9a9e, #fecfef)";
+    document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #ff7eb3, #ff758c)";
+    document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #ee9ca7, #ffdde1)";
+});
+
+
+theme7Button.addEventListener("click", () => {
+    document.body.style.backgroundImage = "linear-gradient(to bottom right, #0f0c29, #302b63, #24243e)";
+    document.querySelector('.header').style.backgroundImage = "linear-gradient(to bottom right, #12c2e9, #c471ed, #f64f59)";
+    document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #833ab4, #fd1d1d, #fcb045)";
+    document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #ff6a00, #ee0979)";
+});
+
+
+theme8Button.addEventListener("click", () => {
+    document.body.style.backgroundImage = "linear-gradient(to bottom right, #11998e, #38ef7d)";
+    document.querySelector('.header').style.backgroundImage = "linear-gradient(to bottom right, #56ab2f, #a8e063)";
+    document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #43cea2, #185a9d)";
+    document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #67b26f, #4ca2cd)";
+});
+
+
+theme9Button.addEventListener("click", () => {
+    document.body.style.backgroundImage = "linear-gradient(to bottom right, #ff9a9e, #fad0c4)";
+    document.querySelector('.header').style.backgroundImage = "linear-gradient(to bottom right, #ffb6c1, #fbc2eb)";
+    document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #fcb045, #ff9a9e)";
+    document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #ffdde1, #f4c4f3)";
+});
+
+
+theme10Button.addEventListener("click", () => {
+    document.body.style.backgroundImage = "linear-gradient(to bottom right, #20002c, #cbb4d4)";
+    document.querySelector('.header').style.backgroundImage = "linear-gradient(to bottom right, #ff00ff, #00ffff)";
+    document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #c94b4b, #4b134f)";
+    document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #00c6ff, #0072ff)";
+});
+theme11Button.addEventListener("click", () => {
+    document.body.style.backgroundImage = "linear-gradient(to bottom right, #e6e9f0, #eef1f5)";
+    document.querySelector('.header').style.backgroundImage = "linear-gradient(to bottom right, #36d1dc, #5b86e5)";
+    document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #30cfd0, #330867)";
+    document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #00c6ff, #0072ff)";
+});
+theme12Button.addEventListener("click", () => {
+    document.body.style.backgroundImage = "linear-gradient(to bottom right, #ff512f, #dd2476)";
+    document.querySelector('.header').style.backgroundImage = "linear-gradient(to bottom right, #00c6ff, #0072ff)";
+    document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #f12711, #f5af19)";
+    document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #12c2e9, #c471ed, #f64f59)";
+});

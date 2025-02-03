@@ -12,11 +12,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    transition: background-image 0.5s ease-in-out; /* Smooth transition */
 }
 
 .chatroom-container {
     background-image: linear-gradient(to bottom right, #ff7e5f, #feb47b);
-
+    transition: background-image 0.5s ease-in-out; /* Smooth transition */
     width: 80%;
     max-width: 1000px;
     height: 90%;
@@ -29,6 +30,7 @@ body {
 }
 
 .header {
+    transition: background-image 0.5s ease-in-out; /* Smooth transition */
     position: relative;
     background-image: linear-gradient(to bottom right, #4facfe, #00f2fe);
     color: rgb(229, 255, 0);
@@ -141,6 +143,7 @@ body {
 
 /* Side Panel */
 .side-panel {
+    transition: background-image 0.5s ease-in-out; /* Smooth transition */
     width: 300px;
     background-image: linear-gradient(to bottom right, #43cea2, #185a9d);
     padding: 20px;
@@ -290,6 +293,78 @@ body {
 
 /* Close Button */
 .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+.theme {
+    background-image: linear-gradient(to bottom right, #9C27B0, #D500F9, #FF4081);
+    color: white;
+    border-radius: 50px;
+    height: 40px;
+    width: 90px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 9px;  /* Keep the same position */
+    left: 110px; /* Keep the same position */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden; /* Hide overflow from the shine */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Green Shine Effect */
+.theme::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* Start further left to ensure full movement */
+    width: 150%; /* Extend width for smooth transition */
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 0, 0) 0%, rgba(255, 165, 0, 0.8) 50%, rgba(255, 69, 0, 0) 100%);
+    transform: skewX(-25deg); /* Slanted shine */
+    animation: shine-light 3s infinite ease-in-out;
+}
+
+/* Animation */
+@keyframes shine-light {
+    0% { left: -150%; }
+    50% { left: 150%; }
+    100% { left: 150%; }
+}
+.theme-popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup Content Box */
+.theme-popup-content {
+    background: #222; /* Dark background */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: left;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Close Button */
+.themeclose {
     position: absolute;
     right: 15px;
     top: 15px;
