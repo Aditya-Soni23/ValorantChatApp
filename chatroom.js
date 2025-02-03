@@ -419,21 +419,24 @@ document.getElementById("joinVoiceChatBtn").addEventListener("click", function()
 });
 
 
+// Get elements
+const badgeButton = document.getElementById("badgeButton");
+const badgePopup = document.getElementById("badgePopup");
+const closePopup = document.querySelector(".close");
 
+// Show popup when button is clicked
+badgeButton.addEventListener("click", () => {
+    badgePopup.style.display = "flex";
+});
 
+// Hide popup when close button is clicked
+closePopup.addEventListener("click", () => {
+    badgePopup.style.display = "none";
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Hide popup when clicking outside the content box
+window.addEventListener("click", (e) => {
+    if (e.target === badgePopup) {
+        badgePopup.style.display = "none";
+    }
+});
