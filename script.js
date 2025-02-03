@@ -2,19 +2,19 @@ const agentPreviews = {
     "Jett": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/94d795777116652279c4de73ba19976639c12f5d-1920x1080.jpg?auto=format&fit=fill&q=80&w=1082", // Jett image
     "Phoenix": "https://www.esports.net/wp-content/uploads/2022/07/valorant-phoenix-agent-e1727691652663.jpg", // Phoenix image URL (fill this in)
     "Sage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXqcQQYESkQEZL-XmoBBBz7_-4XJIcj3QMKQ&s", // Sage image URL (fill this in)
-    "Reyna": "https://www.exitlag.com/blog/wp-content/uploads/2024/08/Mastering-Reyna-In-Valorant.webp", // Reyna image URL (fill this in)
+    "Reyna🌸": "https://www.exitlag.com/blog/wp-content/uploads/2024/08/Mastering-Reyna-In-Valorant.webp", // Reyna image URL (fill this in)
     "Omen": "https://images.alphacoders.com/114/1149362.jpg", // Omen image URL (fill this in)
     "Raze": "https://staticg.sportskeeda.com/editor/2023/06/4ca3b-16858121505852-1920.jpg", // Raze image URL (fill this in)
-    "Brimstone": "https://www.zleague.gg/theportal/wp-content/uploads/2023/04/Valorant-Brimstone-title-card-aspect-ratio-2-1.jpg", // Brimstone image URL (fill this in)
+    "Brimstone📱": "https://www.zleague.gg/theportal/wp-content/uploads/2023/04/Valorant-Brimstone-title-card-aspect-ratio-2-1.jpg", // Brimstone image URL (fill this in)
     "Killjoy": "https://i.ytimg.com/vi/ua-iIRQDY8g/maxresdefault.jpg", // Killjoy image URL (fill this in)
     "Viper": "https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2021/5/31/zxwpi7hkm1up0nd0p8lg/valorant-agent-viper", // Viper image URL (fill this in)
     "Sova": "https://img.redbull.com/images/c_crop,w_3840,h_1920,x_0,y_0/c_auto,w_1200,h_600/f_auto,q_auto/redbullcom/2021/4/14/lyuguphp3zyhcxdvyfat/valorant-sova", // Sova image URL (fill this in)
-    "Cypher": "https://staticg.sportskeeda.com/editor/2023/05/50e4c-16851909040301-1920.jpg", // Cypher image URL (fill this in)
+    "Cypher🌎": "https://staticg.sportskeeda.com/editor/2023/05/50e4c-16851909040301-1920.jpg", // Cypher image URL (fill this in)
     "Yoru⭐": "https://cdn-wp.thesportsrush.com/2023/06/7dea8bd2-untitled-design-2023-06-05t224213.403.jpg?format=auto&w=3840&q=75", // Yoru image URL (fill this in)
     "Clove🛠️": "https://imageio.forbes.com/specials-images/imageserve/65ff3fefa4d4cfc35a9fc1fe/The-key-art-for-Valorant-agent-Clove/960x0.jpg?format=jpg&width=960", // KAY/O image URL (fill this in)
     "Tejo": "https://xxboxnews.blob.core.windows.net/prod/sites/2/2024/12/VAL_XB_A27_XboxWireTejoKeyArt_3840x2160-91fcae4fd9539e78bca7.jpg", // Skye image URL (fill this in)
     "Neon": "https://cdn.mos.cms.futurecdn.net/sXdZCSF4UiwhsaJxLQ76xY-1200-80.png", // Neon image URL (fill this in)
-    "Viper": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGrNfRiJ-oTZuSXs9qqcB9gjvH9j3TmsW5gw&s"
+    "Viper💻": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGrNfRiJ-oTZuSXs9qqcB9gjvH9j3TmsW5gw&s"
 };
 
 function showAgentPreview() {
@@ -33,19 +33,19 @@ const agentPasswords = {
     "Jett": "blade45", // Jett password
     "Phoenix": "fire64", // Phoenix password
     "Sage": "heal78", // Sage password
-    "Reyna": "empress53", // Reyna password
+    "Reyna🌸": "empress53", // Reyna password
     "Omen": "teleport69", // Omen password
     "Raze": "blast22", // Raze password
-    "Brimstone": "smoke99", // Brimstone password
+    "Brimstone📱": "smoke99", // Brimstone password
     "Killjoy": "supress21", // Killjoy password
     "Viper": "toxic90", // Viper password
     "Sova": "bow88", // Sova password
-    "Cypher": "position17", // Cypher password
+    "Cypher🌎": "position17", // Cypher password
     "Yoru⭐": "drift55", // Updated password for Yoru (please ensure it's correct)
     "Clove🛠️": "revive23", // Clove password
     "Tejo": "missile55", // Tejo password
     "Neon": "sprint34", // Neon password
-    "Viper": "toxic47"
+    "Viper💻": "toxic47"
 };
 
 document.getElementById("loginForm").addEventListener("submit", function(event) {
