@@ -147,23 +147,39 @@ function checkForAgent(messageText) {
         }
     });
 }
-
+function showNotification() {
+    if (Notification.permission === "granted") {
+        new Notification("Notification", {
+            body: "A new message is waiting for you!",
+            icon: 'valo.png'
+        });
+    } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => {
+            if (permission === "granted") {
+                showNotification();
+            }
+        });
+    }
+}
 // Fetch messages from Firebase and display in chat
 const messagesRef = ref(db, 'messages');
+
+
+let lastMessageTimestamp = 0;  // ✅ Define globally at the top
+
 onValue(messagesRef, (snapshot) => {
     const messages = snapshot.val();
     const messagesContainer = document.getElementById('messages');
     messagesContainer.innerHTML = ''; // Clear previous messages
 
-    // Play notification sound
-    //const notificationSound = new Audio('ace.mp3'); // Ensure correct path
+    let latestTimestamp = lastMessageTimestamp; // ✅ Track the newest message timestamp
 
     for (const messageId in messages) {
         const message = messages[messageId];
         const messageContainer = document.createElement('div');
 
         if (message.sender === 'Gekko') {
-            messageContainer.classList.add('message', 'gekko-message'); // Gekko's messages styling
+            messageContainer.classList.add('message', 'gekko-message');
 
             const gekkoIcon = document.createElement('img');
             gekkoIcon.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDLwtTIc20YCHrG4LXpngr_oZP-ueLH_yjCg&s';
@@ -189,7 +205,7 @@ onValue(messagesRef, (snapshot) => {
 
         const messageTime = document.createElement('span');
         messageTime.classList.add('message-time');
-        messageTime.textContent = formatTime(message.timestamp); // Format timestamp
+        messageTime.textContent = formatTime(message.timestamp);
 
         messageContent.appendChild(username);
         messageContent.appendChild(messageText);
@@ -198,13 +214,23 @@ onValue(messagesRef, (snapshot) => {
         messageContainer.appendChild(messageContent);
         messagesContainer.appendChild(messageContainer);
 
-        // Play the notification sound for each new message
-        //notificationSound.play().catch((error) => console.warn('Audio playback failed:', error));
+        // ✅ Check if this message is new before playing notification
+        if (message.timestamp > lastMessageTimestamp) {
+            latestTimestamp = Math.max(latestTimestamp, message.timestamp);
+            if (message.sender !== loggedInAgent) {  
+                showNotification(); // ✅ Notify only for new messages from others
+            }
+        }
     }
+
+    // ✅ Update the lastMessageTimestamp after processing all messages
+    lastMessageTimestamp = latestTimestamp;
 
     // Auto-scroll to the bottom when new messages are added
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 });
+
+
 
 
 // Reference to the Firebase Realtime Database where agent data will be stored
@@ -568,3 +594,21 @@ theme12Button.addEventListener("click", () => {
     document.querySelector('.chatroom-container').style.backgroundImage = "linear-gradient(to bottom right, #f12711, #f5af19)";
     document.querySelector('.side-panel').style.backgroundImage = "linear-gradient(to bottom right, #12c2e9, #c471ed, #f64f59)";
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
