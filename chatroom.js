@@ -81,8 +81,8 @@ function fetchAgentDescription(agentName) {
 
 // Send the agent description message to the chat and save it to Firebase
 function sendAgentDescription(agentName, description) {
-    const audio = new Audio('gekko.mp3');
-    audio.play()
+    //const audio = new Audio('gekko.mp3');
+    //audio.play()
     const botMessage = ` ${agentName}: ${description}`;
 
     // Push the bot's response to Firebase
