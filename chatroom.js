@@ -149,9 +149,9 @@ function checkForAgent(messageText) {
 }
 function showNotification() {
     if (Notification.permission === "granted") {
-        new Notification("Notification", {
-            body: "A new message is waiting for you!",
-            icon: 'valo.png'
+        new Notification("Valorant Notification", {
+            body: "A new Message is waiting for you!",
+            icon: 'diamond.jpg'
         });
     } else if (Notification.permission !== "denied") {
         Notification.requestPermission().then(permission => {
@@ -161,18 +161,17 @@ function showNotification() {
         });
     }
 }
+// Convert minutes to milliseconds
+let reminderTime = 600000;
+setInterval(showNotification, reminderTime);
 // Fetch messages from Firebase and display in chat
 const messagesRef = ref(db, 'messages');
 
-
-let lastMessageTimestamp = 0;  // ✅ Define globally at the top
 
 onValue(messagesRef, (snapshot) => {
     const messages = snapshot.val();
     const messagesContainer = document.getElementById('messages');
     messagesContainer.innerHTML = ''; // Clear previous messages
-
-    let latestTimestamp = lastMessageTimestamp; // ✅ Track the newest message timestamp
 
     for (const messageId in messages) {
         const message = messages[messageId];
@@ -214,17 +213,7 @@ onValue(messagesRef, (snapshot) => {
         messageContainer.appendChild(messageContent);
         messagesContainer.appendChild(messageContainer);
 
-        // ✅ Check if this message is new before playing notification
-        if (message.timestamp > lastMessageTimestamp) {
-            latestTimestamp = Math.max(latestTimestamp, message.timestamp);
-            if (message.sender !== loggedInAgent) {  
-                showNotification(); // ✅ Notify only for new messages from others
-            }
-        }
     }
-
-    // ✅ Update the lastMessageTimestamp after processing all messages
-    lastMessageTimestamp = latestTimestamp;
 
     // Auto-scroll to the bottom when new messages are added
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
