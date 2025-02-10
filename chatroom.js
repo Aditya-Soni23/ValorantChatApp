@@ -95,7 +95,7 @@ function sendAgentDescription(agentName, description) {
 }
 
 // Check if any agent name is mentioned in the message
-function checkForAgent(messageText) {
+/*function checkForAgent(messageText) {
     const agentNames = [
         "jett",
         "phoenix",
@@ -146,7 +146,7 @@ function checkForAgent(messageText) {
             fetchAgentDescription(agentName); // Fetch and show agent description
         }
     });
-}
+}*/
 function showNotification() {
     if (Notification.permission === "granted") {
         new Notification("Valorant Notification", {
@@ -601,3 +601,38 @@ theme12Button.addEventListener("click", () => {
 
 
 
+function startBanTimer(banStartTime) {
+    const banDuration = 168 * 60 * 60 * 1000; // 168 hours in milliseconds
+    const banEndTime = banStartTime + banDuration;
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const remainingTime = banEndTime - now;
+
+        if (remainingTime <= 0) {
+            document.getElementById("bantimer").innerText = "Ban expired";
+            clearInterval(interval);
+            return;
+        }
+
+        let hours = Math.floor(remainingTime / (1000 * 60 * 60));
+        let minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+        document.getElementById("bantimer").innerText = `${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateTimer(); // Initial call
+    const interval = setInterval(updateTimer, 1000);
+}
+
+// Store the ban start time if not already stored
+let banStartTime = localStorage.getItem("banStartTime");
+if (!banStartTime) {
+    banStartTime = new Date().getTime();
+    localStorage.setItem("banStartTime", banStartTime);
+} else {
+    banStartTime = parseInt(banStartTime);
+}
+
+startBanTimer(banStartTime);
