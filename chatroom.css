@@ -228,11 +228,11 @@ body {
     right: 10px; /* Align with the logout button */
 }
 .badge {
-    background: linear-gradient(135deg, #FF9800, #D32F2F, #FFD700);
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
     color: white;
     border-radius: 50px;
     height: 40px;
-    width: 90px;
+    width: 130px;
     border: none;
     cursor: pointer;
     position: absolute;
@@ -245,6 +245,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 1px;
 }
 
 /* Green Shine Effect */
@@ -305,7 +306,7 @@ body {
     color: white;
     border-radius: 50px;
     height: 40px;
-    width: 90px;
+    width: 130px;
     border: none;
     cursor: pointer;
     position: absolute;
@@ -315,9 +316,10 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     overflow: hidden; /* Hide overflow from the shine */
-    display: flex;
     align-items: center;
     justify-content: center;
+    top: 44px;
+    left: 10px;
 }
 
 /* Green Shine Effect */
@@ -374,4 +376,35 @@ body {
 }
 .bangekkotimer{
     font-size:13px;
+}
+.logoutimg{
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 4px; /* Adjust vertical positioning */
+    right: 20px; /* Align to the right */
+    
+}
+.themeimg{
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 4px; /* Adjust vertical positioning */
+    right: 5px; /* Align to the right */
+}
+.badgeimg{
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 4px; /* Adjust vertical positioning */
+    right: 5px; /* Align to the right */
 }
