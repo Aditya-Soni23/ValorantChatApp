@@ -1,0 +1,147 @@
+body {
+    background: linear-gradient(to top, #f3e5f5, #e1bee7);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container {
+    perspective: 1000px; /* Adding perspective to create 3D effect */
+}
+
+.credit-card {
+    width: 800px; /* Increased width */
+    height: 450px; /* Increased height */
+    border-radius: 15px;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.credit-card:hover {
+    transform: rotateY(180deg); /* Flip the card on hover */
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide back when facing away */
+    border-radius: 15px;
+}
+
+.card-front {
+    background: linear-gradient(to right, #3b8d99, #6b3f92); /* Front card gradient */
+    color: #fff;
+    padding: 25px; /* Adjusted padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-number {
+    font-size: 24px; /* Increased font size */
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.card-holder {
+    font-size: 16px; /* Adjusted font size */
+    background-color: orange;
+    color: black;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.expiry {
+    font-size: 16px; /* Adjusted font size */
+    font-size: 20px;
+    font-weight: bolder;
+    position: absolute;
+    bottom: 150px;
+}
+
+.card-back {
+    background: linear-gradient(to right, #f36f6f, #f98f41); /* Back card gradient */
+    color: #fff;
+    padding: 25px; /* Adjusted padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    transform: rotateY(180deg); /* Ensure back side is initially flipped */
+}
+
+.cvv {
+    font-size: 24px; /* Increased font size */
+    font-weight: bold;
+}
+
+.riddle {
+    margin-top: 30px;
+    font-size: 18px; /* Increased font size */
+}
+
+input {
+    padding: 12px;
+    margin-top: 12px;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 24px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#result {
+    display: none;
+    margin-top: 25px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+.bankimg{
+    height: 70px;
+    width: 80px;
+    border-radius: 20px;
+    position: absolute;
+    right: 180px;
+    top: 20px;
+}
+.banktext{
+    position: absolute;
+    right: 10px;
+}
+.cardholderimg{
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+    position: absolute;
+    bottom: 30px;
+    left: 240px;
+}

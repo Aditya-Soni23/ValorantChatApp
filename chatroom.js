@@ -513,6 +513,28 @@ window.addEventListener("click", (e) => {
 });
 
 
+const earnstoreButton = document.getElementById("earnstoreButton");
+const earnstorePopup = document.getElementById("earnstorePopup");
+const earnstoreclosePopup = document.querySelector(".earnstoreclose");
+
+// Show popup when button is clicked
+earnstoreButton.addEventListener("click", () => {
+    earnstorePopup.style.display = "flex";
+});
+
+// Hide popup when close button is clicked
+earnstoreclosePopup.addEventListener("click", () => {
+    earnstorePopup.style.display = "none";
+});
+
+// Hide popup when clicking outside the content box
+window.addEventListener("click", (e) => {
+    if (e.target === earnstorePopup) {
+        earnstorePopup.style.display = "none";
+    }
+});
+
+
 // Get the buttons
 const theme1Button = document.getElementById("theme1");
 const theme2Button = document.getElementById("theme2");
@@ -650,6 +672,7 @@ buyButtons.forEach(button => {
         
         // Send the message to the chatroom (Assuming a function `sendBuyRequest` exists to send to chat)
         sendBuyRequest(storemessage);
+        storePopup.style.display = "none";
     });
 });
 
@@ -689,8 +712,9 @@ showbadge.addEventListener("click", () => {
 });
 
 
-
-
+function jackpot() {
+    window.location.href = "jackpot.html";
+}
 
 
 

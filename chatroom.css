@@ -476,7 +476,7 @@ body {
     border-radius: 10px;
     width: 80%; /* Make it responsive, so it adjusts on different screen sizes */
     max-width: 1000px; /* Maximum width */
-    height: auto; /* Allow height to adjust based on content */
+    height: 510px; /* Allow height to adjust based on content */
     text-align: left;
     box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
     display: flex;
@@ -565,3 +565,115 @@ body {
 }
 
 
+.earnstore {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b); /* Darker on hover */
+    color: white;
+    border-radius: 50px;
+    height: 40px;
+    width: 130px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 9px;  /* Keep the same position */
+    left: 110px; /* Keep the same position */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden; /* Hide overflow from the shine */
+    align-items: center;
+    justify-content: center;
+    top: 44px;
+    left: 145px;
+}
+
+/* Green Shine Effect */
+.earnstore::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* Start further left to ensure full movement */
+    width: 150%; /* Extend width for smooth transition */
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 0, 0) 0%, rgba(255, 165, 0, 0.8) 50%, rgba(255, 69, 0, 0) 100%);
+    transform: skewX(-25deg); /* Slanted shine */
+    animation: shine-light 3s infinite ease-in-out;
+}
+
+/* Animation */
+@keyframes shine-light {
+    0% { left: -150%; }
+    50% { left: 150%; }
+    100% { left: 150%; }
+}
+.earnstore-popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup Content Box */
+.earnstore-popup-content {
+    background: #222; /* Dark background */
+    color: white;
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 10px;
+    width: 80%; /* Make it responsive, so it adjusts on different screen sizes */
+    max-width: 1000px; /* Maximum width */
+    height: auto; /* Allow height to adjust based on content */
+    text-align: left;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column; /* Align elements vertically */
+    margin: 0 auto; /* Center align on the screen */
+}
+
+/* Add specific styles for buttons inside the popup */
+.earnstore-popup-content button {
+    padding: 12px 25px; /* Add more padding to buttons */
+    font-size: 16px; /* Slightly larger font size */
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff6b81, #ff8e53); /* Gradient background for buttons */
+    border: none;
+    color: white;
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 5px 10px rgba(255, 255, 255, 0.3);
+    align-self: center; /* Center buttons horizontally */
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+/* Hover effect for buttons */
+.earnstore-popup-content button:hover {
+    transform: translateY(-4px); /* Lift effect */
+    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.4); /* More intense shadow */
+}
+
+
+/* Close Button */
+.earnstoreclose {
+    position: absolute;
+    right: 280px;
+    top: 230px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+.earnimg{
+    height: 30px;
+    width: 30px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 4px; /* Adjust vertical positioning */
+    right: 5px; /* Align to the right */
+}

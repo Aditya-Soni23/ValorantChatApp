@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jackpot Challenge</title>
+    <link rel="stylesheet" href="jackpot.css">
+    <link rel="icon" type="image/x-icon" href="valo.png">
+</head>
+<body>
+
+    <div class="container">
+        <div class="card-container">
+            <div class="credit-card">
+                <!-- Front of the Credit Card -->
+                <div class="card-front">
+                    <p class="banktext">Valorant Bank Of India</p><img class="bankimg" src="valo.png">
+                    <div class="card-number">1234 5678 9876 5432</div>
+                    <div class="expiry">
+                        <p>Expiry: 12/2025</p>
+                    </div>
+                    <div class="card-holder">
+                        <p>Cardholder:<img class="cardholderimg" src="chamber.png"> Chamber</p>
+                    </div>
+                    
+                </div>
+
+                <!-- Back of the Credit Card -->
+                <div class="card-back">
+                    <div class="cvv">CVV: 123</div>
+                    <div class="riddle">
+                        <p>Solve this riddle to get the PIN:</p>
+                        <p><strong>What comes once in a minute, twice in a moment, but never in a thousand years?</strong></p>
+                    </div>
+
+                    <!-- Input for PIN -->
+                    <input type="text" id="riddle-answer" placeholder="Enter answer...">
+                    <button class="btn" onclick="checkAnswer()">Submit</button>
+
+                    <!-- Hidden Section for Result -->
+                    <div id="result" class="hidden">
+                        <p>Congratulations! The PIN is: <span id="pin"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="jackpot.js"></script>
+</body>
+</html>

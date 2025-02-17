@@ -209,10 +209,39 @@
             
             
             
-            <br><br><br><br>
+            <br>
 
             <p style="color: red; text-align: center;">You can request a custom badge by contacting the admin.</p>
         </ul>
+    </div>
+</div>
+
+
+
+
+
+
+<button class="earnstore" id="earnstoreButton">Earn<img class="earnimg" src="earn.png"></button>
+
+<div id="earnstorePopup" class="earnstore-popup">
+    <div class="earnstore-popup-content">
+        <span class="earnstoreclose">&times;</span>
+        <h2 style="text-align: center; color: yellow;">Earn Credits💰</h2>
+        <p style="text-align: center; color: lime;">💲Complete the missions to earn credits💲</p><br>
+        <ul>
+            <li>
+                <span>Invite a player to earn 500💰(DM Clove after inviting)</span>
+            </li>
+            <li>
+                <span>Find a bug/error in the app to earn 300💰(DM Clove about the bug)</span>
+            </li>
+            <li>
+                <span>To earn a jackpot, complete the challenge</span>
+                <button onclick="jackpot()">Accept Challenge</button>
+
+            </li>
+        </ul>
+        
     </div>
 </div>
 
@@ -261,5 +290,10 @@
     
 
     <script src="chatroom.js"></script>
+    <script>
+        function jackpot() {
+            window.location.assign("jackpot.html");
+        }
+    </script>
 </body>
 </html>
