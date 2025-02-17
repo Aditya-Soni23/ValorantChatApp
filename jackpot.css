@@ -50,8 +50,17 @@ body {
 
 .card-number {
     font-size: 24px; /* Increased font size */
-    letter-spacing: 2px;
     font-weight: bold;
+    margin-top: 200px;
+    text-align: center;
+    letter-spacing: 20px;
+}
+.card-riddle {
+    font-size: 24px; /* Increased font size */
+    font-weight: bold;
+    position: absolute;
+    bottom: 70px;
+    left: 150px;
 }
 
 .card-holder {
@@ -82,14 +91,15 @@ body {
 }
 
 .cvv {
-    font-size: 24px; /* Increased font size */
-    font-weight: bold;
+    background-color: black;
+    width: 850px;
+    height: 50px;
+    left: 1px;
+    top: 50px;
+    position: absolute;
 }
 
-.riddle {
-    margin-top: 30px;
-    font-size: 18px; /* Increased font size */
-}
+
 
 input {
     padding: 12px;
@@ -100,31 +110,7 @@ input {
     font-size: 16px;
 }
 
-button {
-    padding: 12px 24px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    margin-top: 12px;
-    cursor: pointer;
-}
 
-button:hover {
-    background-color: #45a049;
-}
-
-#result {
-    display: none;
-    margin-top: 25px;
-    font-size: 20px;
-    color: #fff;
-}
-
-.hidden {
-    display: none;
-}
 .bankimg{
     height: 70px;
     width: 80px;
@@ -144,4 +130,63 @@ button:hover {
     position: absolute;
     bottom: 30px;
     left: 240px;
+}
+.chip{
+    position: absolute;
+    top: 70px;
+    height: 130px;
+    width: 150px;
+}
+.text{
+    position: absolute;
+    width: 500px;
+    top: 200px;
+    height: 30px;
+}
+.sig{
+    position: absolute;
+    top: 130px;
+    color: black;
+    font-size: 20px;
+}
+.boxx {
+    position: absolute;
+    top: 215px;
+    right: 100px;
+    background-color: white;
+    height: 50px;
+    border-radius: 5px;
+    width: 150px;
+    color: black;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    
+    /* Center text vertically */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.falcon{
+    height: 100px;
+    width: 100px;
+}
+.falb{
+    position: absolute;
+    bottom: 100px;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+}
+
+.back{
+    color: black;
+    background-color: green;
+    border-radius: 20px;
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-weight: bolder;
 }

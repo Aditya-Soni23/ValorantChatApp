@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="jackpot.css">
     <link rel="icon" type="image/x-icon" href="valo.png">
 </head>
-<body>
+<body><button class="back" onclick="back()">Back</button>
 
     <div class="container">
         <div class="card-container">
@@ -15,6 +15,7 @@
                 <!-- Front of the Credit Card -->
                 <div class="card-front">
                     <p class="banktext">Valorant Bank Of India</p><img class="bankimg" src="valo.png">
+                    <img class="chip" src="chip.png">
                     <div class="card-number">1234 5678 9876 5432</div>
                     <div class="expiry">
                         <p>Expiry: 12/2025</p>
@@ -27,25 +28,29 @@
 
                 <!-- Back of the Credit Card -->
                 <div class="card-back">
-                    <div class="cvv">CVV: 123</div>
-                    <div class="riddle">
-                        <p>Solve this riddle to get the PIN:</p>
-                        <p><strong>What comes once in a minute, twice in a moment, but never in a thousand years?</strong></p>
-                    </div>
+                    <div class="cvv"></div>
+                    <h1 class="sig">Authorise Signature</h1>
 
                     <!-- Input for PIN -->
-                    <input type="text" id="riddle-answer" placeholder="Enter answer...">
-                    <button class="btn" onclick="checkAnswer()">Submit</button>
+                    <input type="text" class="text" id="riddle-answer" placeholder="Enter answer...">
+                    <div class="boxx">5637</div>
+                    <button class="falb"><img class="falcon" src="falcon.png"></button>
+                    <h1 class="card-riddle">"I’m not the first, I’m not the last,<br>
+                        In the middle, you’ll find me fast.
+                        A master of time, <br>sharp as can be,
+                        Find the number where he’s seen to be.
+                        Always go for right, and you’ll see,</h1>
 
-                    <!-- Hidden Section for Result -->
-                    <div id="result" class="hidden">
-                        <p>Congratulations! The PIN is: <span id="pin"></span></p>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="jackpot.js"></script>
+    <script>
+        function back() {
+            window.location.assign("chatroom.html");
+        }
+    </script>
 </body>
 </html>
