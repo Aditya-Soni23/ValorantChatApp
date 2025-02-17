@@ -144,15 +144,18 @@ body {
 /* Side Panel */
 .side-panel {
     transition: background-image 0.5s ease-in-out; /* Smooth transition */
-    width: 300px;
+    width: 350px;
     background-image: linear-gradient(to bottom right, #43cea2, #185a9d);
     padding: 20px;
     border-right: 2px solid rgb(238, 255, 0);
     height: 90vh;
+    max-height: 90vh; /* Ensure the height is constrained */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     margin-right: 70px;
     border-radius: 30px;
+    overflow-y: auto; /* Make the panel scrollable */
 }
+
 
 .side-panel h3 {
     font-size: 1.5rem;
@@ -167,6 +170,9 @@ body {
     transition: background-color 0.3s ease;
     background-color: white;
     height: 53px;
+}
+.hide {
+    display: none;
 }
 
 .agent:hover {
@@ -408,3 +414,154 @@ body {
     top: 4px; /* Adjust vertical positioning */
     right: 5px; /* Align to the right */
 }
+
+.store {
+    background: linear-gradient(135deg, #1A1A40, #4B0082);
+    color: white;
+    border-radius: 50px;
+    height: 40px;
+    width: 130px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 9px;  /* Keep the same position */
+    left: 110px; /* Keep the same position */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden; /* Hide overflow from the shine */
+    align-items: center;
+    justify-content: center;
+    top: 1px;
+    left: 145px;
+}
+
+/* Green Shine Effect */
+.store::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* Start further left to ensure full movement */
+    width: 150%; /* Extend width for smooth transition */
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 0, 0) 0%, rgba(255, 165, 0, 0.8) 50%, rgba(255, 69, 0, 0) 100%);
+    transform: skewX(-25deg); /* Slanted shine */
+    animation: shine-light 3s infinite ease-in-out;
+}
+
+/* Animation */
+@keyframes shine-light {
+    0% { left: -150%; }
+    50% { left: 150%; }
+    100% { left: 150%; }
+}
+.store-popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup Content Box */
+.store-popup-content {
+    background: #222; /* Dark background */
+    color: white;
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 10px;
+    width: 80%; /* Make it responsive, so it adjusts on different screen sizes */
+    max-width: 1000px; /* Maximum width */
+    height: auto; /* Allow height to adjust based on content */
+    text-align: left;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column; /* Align elements vertically */
+    margin: 0 auto; /* Center align on the screen */
+}
+
+/* Add specific styles for buttons inside the popup */
+.store-popup-content button {
+    padding: 12px 25px; /* Add more padding to buttons */
+    font-size: 16px; /* Slightly larger font size */
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff6b81, #ff8e53); /* Gradient background for buttons */
+    border: none;
+    color: white;
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 5px 10px rgba(255, 255, 255, 0.3);
+    align-self: center; /* Center buttons horizontally */
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+/* Hover effect for buttons */
+.store-popup-content button:hover {
+    transform: translateY(-4px); /* Lift effect */
+    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.4); /* More intense shadow */
+}
+
+
+/* Close Button */
+.storeclose {
+    position: absolute;
+    right: 280px;
+    top: 100px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+.storeimg{
+    height: 30px;
+    width: 30px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 4px; /* Adjust vertical positioning */
+    right: 5px; /* Align to the right */
+}
+
+
+.buybadge {
+    background: linear-gradient(45deg, #ff6b81, #ff8e53); /* Gradient background for a fancy look */
+    color: white; /* White text for contrast */
+    font-size: 16px; /* Slightly larger text */
+    font-weight: bold; /* Bold text to make it stand out */
+    padding: 15px 30px; /* Padding for better clickability */
+    border: none; /* No border for a smooth look */
+    border-radius: 25px; /* Rounded corners for a modern feel */
+    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+    transition: all 0.3s ease-in-out; /* Smooth transition on hover */
+}
+
+.buybadge:hover {
+    background: linear-gradient(45deg, #ff8e53, #ff6b81); /* Reverse gradient on hover */
+    transform: scale(1.1); /* Slight zoom effect to make it interactive */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover for depth */
+}
+
+.buybadge:active {
+    transform: scale(1); /* Reset scale when button is clicked */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Slightly lighter shadow when clicked */
+}
+
+
+.showbadge{
+    background-color: peachpuff;
+    font-weight: bolder;
+    border-radius: 30px;
+    height: 40px;
+    width: 130px;
+    font-size: 15px;
+    position: absolute;
+    top: 50px;
+    left: 240px;
+}
+
+

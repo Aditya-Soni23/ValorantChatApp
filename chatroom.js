@@ -81,8 +81,8 @@ function fetchAgentDescription(agentName) {
 
 // Send the agent description message to the chat and save it to Firebase
 function sendAgentDescription(agentName, description) {
-    //const audio = new Audio('gekko.mp3');
-    //audio.play()
+    const audio = new Audio('gekko.mp3');
+    audio.play()
     const botMessage = ` ${agentName}: ${description}`;
 
     // Push the bot's response to Firebase
@@ -94,8 +94,14 @@ function sendAgentDescription(agentName, description) {
     });
 }
 
+
+
+
+
+
+//comment this function to ban gekko
 // Check if any agent name is mentioned in the message
-/*function checkForAgent(messageText) {
+function checkForAgent(messageText) {
     const agentNames = [
         "jett",
         "phoenix",
@@ -146,7 +152,12 @@ function sendAgentDescription(agentName, description) {
             fetchAgentDescription(agentName); // Fetch and show agent description
         }
     });
-}*/
+}
+
+
+
+
+
 function showNotification() {
     if (Notification.permission === "granted") {
         new Notification("Valorant Notification", {
@@ -473,8 +484,31 @@ themeclosePopup.addEventListener("click", () => {
 
 // Hide popup when clicking outside the content box
 window.addEventListener("click", (e) => {
-    if (e.target === badgePopup) {
+    if (e.target === themebadgePopup) {
         themebadgePopup.style.display = "none";
+    }
+});
+
+
+
+const storeButton = document.getElementById("storeButton");
+const storePopup = document.getElementById("storePopup");
+const storeclosePopup = document.querySelector(".storeclose");
+
+// Show popup when button is clicked
+storeButton.addEventListener("click", () => {
+    storePopup.style.display = "flex";
+});
+
+// Hide popup when close button is clicked
+storeclosePopup.addEventListener("click", () => {
+    storePopup.style.display = "none";
+});
+
+// Hide popup when clicking outside the content box
+window.addEventListener("click", (e) => {
+    if (e.target === storePopup) {
+        storePopup.style.display = "none";
     }
 });
 
@@ -587,6 +621,72 @@ theme12Button.addEventListener("click", () => {
 
 
 
+function sendBuyRequest(message) {
+    const timestamp = Date.now();
+
+    // Save message to Firebase Realtime Database
+    const messagesRef = ref(db, 'messages');
+    push(messagesRef, {
+        sender: loggedInAgent || 'User', // Default to 'User' if not logged in
+        message: message,
+        timestamp: timestamp
+    });
+
+    // Optionally, you can handle other actions (e.g., updating the UI) after sending the request
+}
+
+// Get all the buy badge buttons
+const buyButtons = document.querySelectorAll('.buybadge');
+
+// Add click event listeners to each button
+buyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Get the badge name and price from the button's data attributes
+        const badge = button.getAttribute('data-badge');
+        const price = button.getAttribute('data-price');
+        
+        // Construct the buy request message
+        const storemessage = `[BUY REQUEST] - Raze, buy me ${badge} for 💰${price}`;
+        
+        // Send the message to the chatroom (Assuming a function `sendBuyRequest` exists to send to chat)
+        sendBuyRequest(storemessage);
+    });
+});
+
+const showbadge = document.getElementById("showbadge");
+
+showbadge.addEventListener("click", () => {
+    // Select all the agent and hide elements
+    const agents = document.querySelectorAll('.agent');
+    const hides = document.querySelectorAll('.hide');
+
+    // Check if badges are already visible or hidden
+    const badgesVisible = agents[0].style.height === '100px'; // Check height of the first agent to determine visibility
+
+    if (badgesVisible) {
+        // If badges are visible, hide them
+        agents.forEach(agent => {
+            agent.style.height = '53px'; // Collapse to original height
+        });
+
+        hides.forEach(hide => {
+            hide.style.display = 'none'; // Hide the content
+        });
+
+        showbadge.textContent = "Show Badges"; // Change text to "Show Badge"
+    } else {
+        // If badges are hidden, show them
+        agents.forEach(agent => {
+            agent.style.height = '100px'; // Expand to new height
+        });
+
+        hides.forEach(hide => {
+            hide.style.display = 'block'; // Show the content
+        });
+
+        showbadge.textContent = "Close Badges"; // Change text to "Close Badge"
+    }
+});
 
 
 
@@ -595,13 +695,7 @@ theme12Button.addEventListener("click", () => {
 
 
 
-
-
-
-
-
-
-function startBanTimer(banStartTime) {
+/*function startBanTimer(banStartTime) {
     const banDuration = 168 * 60 * 60 * 1000; // 168 hours in milliseconds
     const banEndTime = banStartTime + banDuration;
 
@@ -635,4 +729,6 @@ if (!banStartTime) {
     banStartTime = parseInt(banStartTime);
 }
 
-startBanTimer(banStartTime);
+startBanTimer(banStartTime);*/
+
+
