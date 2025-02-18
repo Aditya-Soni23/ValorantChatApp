@@ -684,7 +684,7 @@ showbadge.addEventListener("click", () => {
     const hides = document.querySelectorAll('.hide');
 
     // Check if badges are already visible or hidden
-    const badgesVisible = agents[0].style.height === '300px'; // Check height of the first agent to determine visibility
+    const badgesVisible = agents[0].style.height === '420px'; // Check height of the first agent to determine visibility
 
     if (badgesVisible) {
         // If badges are visible, hide them
@@ -700,7 +700,7 @@ showbadge.addEventListener("click", () => {
     } else {
         // If badges are hidden, show them
         agents.forEach(agent => {
-            agent.style.height = '300px'; // Expand to new height
+            agent.style.height = '420px'; // Expand to new height
         });
 
         hides.forEach(hide => {
