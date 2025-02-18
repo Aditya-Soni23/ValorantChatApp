@@ -81,8 +81,8 @@ function fetchAgentDescription(agentName) {
 
 // Send the agent description message to the chat and save it to Firebase
 function sendAgentDescription(agentName, description) {
-    const audio = new Audio('gekko.mp3');
-    audio.play()
+    //const audio = new Audio('gekko.mp3');
+    //audio.play()
     const botMessage = ` ${agentName}: ${description}`;
 
     // Push the bot's response to Firebase
@@ -101,7 +101,7 @@ function sendAgentDescription(agentName, description) {
 
 //comment this function to ban gekko
 // Check if any agent name is mentioned in the message
-function checkForAgent(messageText) {
+/*function checkForAgent(messageText) {
     const agentNames = [
         "jett",
         "phoenix",
@@ -152,7 +152,7 @@ function checkForAgent(messageText) {
             fetchAgentDescription(agentName); // Fetch and show agent description
         }
     });
-}
+}*/
 
 
 
@@ -712,14 +712,8 @@ showbadge.addEventListener("click", () => {
 });
 
 
-function jackpot() {
-    window.location.href = "jackpot.html";
-}
 
-
-
-
-/*function startBanTimer(banStartTime) {
+function startBanTimer(banStartTime) {
     const banDuration = 168 * 60 * 60 * 1000; // 168 hours in milliseconds
     const banEndTime = banStartTime + banDuration;
 
@@ -744,15 +738,10 @@ function jackpot() {
     const interval = setInterval(updateTimer, 1000);
 }
 
-// Store the ban start time if not already stored
-let banStartTime = localStorage.getItem("banStartTime");
-if (!banStartTime) {
-    banStartTime = new Date().getTime();
-    localStorage.setItem("banStartTime", banStartTime);
-} else {
-    banStartTime = parseInt(banStartTime);
-}
+// Reset the ban and set a new start time
+let banStartTime = new Date().getTime(); // Set new ban start time to now
+localStorage.setItem("banStartTime", banStartTime);
 
-startBanTimer(banStartTime);*/
+startBanTimer(banStartTime);
 
 
