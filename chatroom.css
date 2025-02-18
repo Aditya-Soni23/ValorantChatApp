@@ -677,3 +677,25 @@ body {
     top: 4px; /* Adjust vertical positioning */
     right: 5px; /* Align to the right */
 }
+.storemanager{
+    height: 50px;
+    width: 50px;
+    border-radius: 20px;
+    position: absolute;
+}
+.storemanagertext{
+    position: absolute;
+    font-weight: bolder;
+    font-size: 15px;
+    color: red;
+    left: 360px;
+    top: 270px;
+}
+.storemanagertextst{
+    position: absolute;
+    font-weight: bolder;
+    font-size: 15px;
+    color: red;
+    left: 360px;
+    top: 140px;
+}
