@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js"></script>
+<script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+
+<!-- Firebase Database (optional, for real-time database) -->
+<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js"></script>
+    <title>Customize Your Chat Theme</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .preview-box {
+            width: 300px;
+            height: 150px;
+            margin: 20px auto;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border: 2px solid #ffd700;
+            transition: 0.3s;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        input {
+            margin: 10px;
+        }
+        button {
+            background-color: #2575fc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #1a5ad6;
+        }
+        .themes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .theme-box {
+            width: 100px;
+            height: 50px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            border: 2px solid transparent;
+            transition: 0.3s;
+        }
+        .theme-box:hover {
+            transform: scale(1.1);
+        }
+        .code-box {
+            margin-top: 20px;
+            padding: 10px;
+            background: #282c34;
+            color: #ffffff;
+            font-family: monospace;
+            border-radius: 8px;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            position: relative;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #61dafb;
+            color: #000;
+            padding: 5px 10px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .copy-btn:hover {
+            background: #21a1f1;
+        }
+        .back{
+    color: black;
+    background-color: green;
+    border-radius: 20px;
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-weight: bolder;
+}
+    </style>
+</head>
+<body>
+    <button class="back" onclick="back()">Back</button>
+
+    <h2>Customize Your Message Theme</h2><h3>After customizing your theme, copy the code given below and go back to chatroom and paste it. Raze will automatically approve your request.</h3>
+    <div class="preview-box" id="preview">Your Message</div>
+
+    <div class="controls">
+        <label>Gradient Start: <input type="color" id="gradientStart" value="#ffcc00"></label>
+        <label>Gradient End: <input type="color" id="gradientEnd" value="#ff6699"></label>
+        <label>Border Color: <input type="color" id="borderColor" value="#ffd700"></label>
+    </div>
+
+
+    <h3>Or Choose a Predefined Theme:</h3>
+    <div class="themes" id="themeContainer">
+        <!-- Predefined themes will be inserted here -->
+    </div>
+
+    <h3>CSS Code for Selected Theme:</h3>
+    <div class="code-box">
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+        <pre id="cssCode">/* Your theme CSS will appear here */</pre>
+    </div>
+
+    <script>
+        const predefinedThemes = [
+            { start: "#ffcc00", end: "#ff6699", border: "#ffd700" },
+            { start: "#2575fc", end: "#6a11cb", border: "#1a5ad6" },
+            { start: "#ff512f", end: "#dd2476", border: "#ff3d00" },
+            { start: "#12c2e9", end: "#c471ed", border: "#833ab4" },
+            { start: "#ff9a9e", end: "#fad0c4", border: "#ff6b81" },
+            { start: "#00c6ff", end: "#0072ff", border: "#0055ff" },
+            { start: "#0f2027", end: "#203a43", border: "#2c5364" },
+            { start: "#ff7e5f", end: "#feb47b", border: "#ff6347" },
+            { start: "#06beb6", end: "#48b1bf", border: "#0d98ba" }
+        ];
+
+        const themeContainer = document.getElementById('themeContainer');
+
+        predefinedThemes.forEach((theme, index) => {
+            const themeBox = document.createElement('div');
+            themeBox.classList.add('theme-box');
+            themeBox.style.background = `linear-gradient(135deg, ${theme.start}, ${theme.end})`;
+            themeBox.style.borderColor = theme.border;
+            themeBox.textContent = `Theme ${index + 1}`;
+            themeBox.onclick = () => applyTheme(theme.start, theme.end, theme.border);
+            themeContainer.appendChild(themeBox);
+        });
+
+        function updatePreview() {
+            const startColor = document.getElementById('gradientStart').value;
+            const endColor = document.getElementById('gradientEnd').value;
+            const borderColor = document.getElementById('borderColor').value;
+
+            const previewBox = document.getElementById('preview');
+            previewBox.style.background = `linear-gradient(135deg, ${startColor}, ${endColor})`;
+            previewBox.style.borderColor = borderColor;
+
+            updateCSSCode(startColor, endColor, borderColor);
+        }
+
+        function applyTheme(start, end, border) {
+            document.getElementById('gradientStart').value = start;
+            document.getElementById('gradientEnd').value = end;
+            document.getElementById('borderColor').value = border;
+            updatePreview();
+        }
+
+        function updateCSSCode(start, end, border) {
+            document.getElementById('cssCode').textContent = 
+`/* Apply this to your chat message */
+.message-box {
+    background: linear-gradient(135deg, ${start}, ${end});
+    border: 2px solid ${border};
+    color: white;
+    padding: 10px;
+    border-radius: 12px;
+}`;
+        }
+
+
+        function copyCode() {
+            const codeText = document.getElementById('cssCode').textContent;
+            navigator.clipboard.writeText(codeText).then(() => {
+                alert("CSS Code Copied!");
+            });
+        }
+
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', updatePreview);
+        });
+
+        updatePreview();
+
+
+function back(){
+    window.location = "chatroom.html";
+}
+
+    </script>
+</body>
+</html>
+

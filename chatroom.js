@@ -713,35 +713,44 @@ showbadge.addEventListener("click", () => {
 
 
 
-function startBanTimer(banStartTime) {
-    const banDuration = 168 * 60 * 60 * 1000; // 168 hours in milliseconds
-    const banEndTime = banStartTime + banDuration;
+/*
 
-    function updateTimer() {
-        const now = new Date().getTime();
-        const remainingTime = banEndTime - now;
+document.addEventListener("DOMContentLoaded", function () {
+    const messagesContainer = document.getElementById('messages');
 
-        if (remainingTime <= 0) {
-            document.getElementById("bantimer").innerText = "Ban expired";
-            clearInterval(interval);
-            return;
+    // Define players and their profile picture URLs
+    const players = {
+        "Clove🛠️": "https://i.imgur.com/YOUR_PROFILE_PIC.png",
+    };
+
+    function stylePremiumMessages() {
+        const messageElements = messagesContainer.getElementsByClassName('message-content');
+
+        for (const element of messageElements) {
+            const usernameSpan = element.querySelector('.username');
+            if (!usernameSpan) continue;
+
+            // Check if username matches any player
+            for (const player in players) {
+                if (usernameSpan.textContent.startsWith(player + ":")) {
+                    const parent = element.parentElement;
+                    parent.classList.add('premium-message', player.toLowerCase().replace(/[^a-z]/g, '')); // Create unique class
+
+                    // Add profile picture if not already added
+                    if (!parent.querySelector('.profile-pic')) {
+                        const profilePic = document.createElement('img');
+                        profilePic.src = players[player];
+                        profilePic.classList.add('profile-pic');
+                        usernameSpan.prepend(profilePic);
+                    }
+                }
+            }
         }
-
-        let hours = Math.floor(remainingTime / (1000 * 60 * 60));
-        let minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-
-        document.getElementById("bantimer").innerText = `${hours}h ${minutes}m ${seconds}s`;
     }
 
-    updateTimer(); // Initial call
-    const interval = setInterval(updateTimer, 1000);
-}
+    // Observe new messages being added and apply styles
+    const observer = new MutationObserver(stylePremiumMessages);
+    observer.observe(messagesContainer, { childList: true });
+});
 
-// Reset the ban and set a new start time
-let banStartTime = new Date().getTime(); // Set new ban start time to now
-localStorage.setItem("banStartTime", banStartTime);
-
-startBanTimer(banStartTime);
-
-
+*/
