@@ -756,13 +756,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Add badge if not already added
                    // Add badge if not already added
+// Add badge if not already added
+// Add badge if not already added
 if (!parent.querySelector('.badgen')) {
     const badge = document.createElement('span');
-    badge.textContent = ` ${players[player].badge} `;
+    badge.textContent = ` ${players[player].badge}`;
     badge.classList.add('badgen', `badgen-${playerClass}`);
-    badge.style.marginRight = "5px"; // Adds space after the badge
     usernameSpan.appendChild(badge);
+
+    // Add ':' after the badge and space before the message
+    const separator = document.createElement('span');
+    separator.textContent = ": ";
+    usernameSpan.appendChild(separator);
 }
+
 
                 }
             }
