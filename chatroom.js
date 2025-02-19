@@ -713,8 +713,6 @@ showbadge.addEventListener("click", () => {
 
 
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const messagesContainer = document.getElementById('messages');
 
@@ -727,8 +725,9 @@ document.addEventListener("DOMContentLoaded", function () {
             badgeColor: "rgb(81, 255, 0)", // Badge color
         },
         "Yoru⭐": {
+            profilePic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCotwNg0Qu8_c7djvcSLoJ2kLXR4PIwiUsVQ&s",
             badge: "GOAT🐐🔥",
-            badgeColor: "rgb(0, 204, 255)",
+            badgeColor: "rgb(81, 255, 0)",
         },
     };
 
@@ -765,6 +764,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         }
+
+        scrollToBottom(); // Ensure it scrolls to the latest message
     }
 
     // Inject dynamic CSS styles
@@ -789,7 +790,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.head.appendChild(styleSheet);
     }
 
+    // Scroll to the latest message
+    function scrollToBottom() {
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
     injectDynamicStyles(); // Apply styles dynamically
     const observer = new MutationObserver(stylePremiumMessages);
     observer.observe(messagesContainer, { childList: true });
+
+    scrollToBottom(); // Ensure it scrolls on initial load
 });
