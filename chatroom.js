@@ -727,6 +727,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Yoru⭐": {
             profilePic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCotwNg0Qu8_c7djvcSLoJ2kLXR4PIwiUsVQ&s",
             badge: "GOAT🐐🔥",
+            gradient: "linear-gradient(135deg, #06beb6, #553c9a);",
             badgeColor: "rgb(81, 255, 0)",
         },
     };
