@@ -482,6 +482,7 @@ body {
     display: flex;
     flex-direction: column; /* Align elements vertically */
     margin: 0 auto; /* Center align on the screen */
+    overflow: auto;
 }
 
 /* Add specific styles for buttons inside the popup */
