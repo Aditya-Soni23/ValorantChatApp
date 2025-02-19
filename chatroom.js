@@ -713,14 +713,23 @@ showbadge.addEventListener("click", () => {
 
 
 
-/*
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const messagesContainer = document.getElementById('messages');
 
-    // Define players and their profile picture URLs
+    // Define players with their profile picture URLs, badges, and styles
     const players = {
-        "Clove🛠️": "https://i.imgur.com/YOUR_PROFILE_PIC.png",
+        "Clove🛠️": {
+            profilePic: "https://cdnb.artstation.com/p/assets/covers/images/072/643/641/smaller_square/viviane-herzog-viviane-herzog-smonk-thumb2.jpg?1707861001",
+            badge: "Diamond 💎V",
+            gradient: "linear-gradient(135deg, #ffcc00, #ff6699)",
+            badgeColor: "rgb(81, 255, 0)", // Badge color
+        },
+        "Yoru⭐": {
+            badge: "GOAT🐐🔥",
+            badgeColor: "rgb(0, 204, 255)",
+        },
     };
 
     function stylePremiumMessages() {
@@ -730,27 +739,57 @@ document.addEventListener("DOMContentLoaded", function () {
             const usernameSpan = element.querySelector('.username');
             if (!usernameSpan) continue;
 
-            // Check if username matches any player
             for (const player in players) {
                 if (usernameSpan.textContent.startsWith(player + ":")) {
                     const parent = element.parentElement;
-                    parent.classList.add('premium-message', player.toLowerCase().replace(/[^a-z]/g, '')); // Create unique class
+                    const playerClass = player.toLowerCase().replace(/[^a-z]/g, '');
+
+                    // Add player-specific class
+                    parent.classList.add('premium-message', playerClass);
 
                     // Add profile picture if not already added
-                    if (!parent.querySelector('.profile-pic')) {
+                    if (!parent.querySelector('.profile-pic') && players[player].profilePic) {
                         const profilePic = document.createElement('img');
-                        profilePic.src = players[player];
+                        profilePic.src = players[player].profilePic;
                         profilePic.classList.add('profile-pic');
                         usernameSpan.prepend(profilePic);
+                    }
+
+                    // Add badge if not already added
+                    if (!parent.querySelector('.badgen')) {
+                        const badge = document.createElement('span');
+                        badge.textContent = ` ${players[player].badge}`;
+                        badge.classList.add('badgen', `badgen-${playerClass}`);
+                        usernameSpan.appendChild(badge);
                     }
                 }
             }
         }
     }
 
-    // Observe new messages being added and apply styles
+    // Inject dynamic CSS styles
+    function injectDynamicStyles() {
+        let styles = "";
+
+        for (const player in players) {
+            const playerClass = player.toLowerCase().replace(/[^a-z]/g, '');
+            styles += `
+                .premium-message.${playerClass} {
+                    background: ${players[player].gradient};
+                    border-color: ${players[player].badgeColor};
+                }
+                .badgen-${playerClass} {
+                    background-color: ${players[player].badgeColor};
+                }
+            `;
+        }
+
+        const styleSheet = document.createElement("style");
+        styleSheet.textContent = styles;
+        document.head.appendChild(styleSheet);
+    }
+
+    injectDynamicStyles(); // Apply styles dynamically
     const observer = new MutationObserver(stylePremiumMessages);
     observer.observe(messagesContainer, { childList: true });
 });
-
-*/

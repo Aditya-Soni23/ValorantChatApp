@@ -706,12 +706,10 @@ body {
     top: 140px;
 }
 
-/*
 
 .premium-message {
-    background: linear-gradient(135deg, #ffcc00, #ff6699); 
     color: white;
-    border: 2px solid #ffd700;
+    border: 2px solid;
     padding: 12px;
     border-radius: 12px;
     font-size: 1rem;
@@ -728,12 +726,21 @@ body {
     z-index: 10;
 }
 
-
-.premium-message.clove {
-    background: linear-gradient(135deg, #ffcc00, #ff6699); 
-    border-color: #ffd700;
+.premium-message .profile-pic {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
 }
 
-
-*/
-
+.badgen {
+    display: inline-block;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+    vertical-align: middle;
+    border: 1px solid #d4af37;
+}
