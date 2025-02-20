@@ -120,7 +120,6 @@
     <div class="controls">
         <label>Gradient Start: <input type="color" id="gradientStart" value="#ffcc00"></label>
         <label>Gradient End: <input type="color" id="gradientEnd" value="#ff6699"></label>
-        <label>Border Color: <input type="color" id="borderColor" value="#ffd700"></label>
     </div>
 
 
@@ -154,40 +153,32 @@
             const themeBox = document.createElement('div');
             themeBox.classList.add('theme-box');
             themeBox.style.background = `linear-gradient(135deg, ${theme.start}, ${theme.end})`;
-            themeBox.style.borderColor = theme.border;
             themeBox.textContent = `Theme ${index + 1}`;
-            themeBox.onclick = () => applyTheme(theme.start, theme.end, theme.border);
+            themeBox.onclick = () => applyTheme(theme.start, theme.end);
             themeContainer.appendChild(themeBox);
         });
 
         function updatePreview() {
             const startColor = document.getElementById('gradientStart').value;
             const endColor = document.getElementById('gradientEnd').value;
-            const borderColor = document.getElementById('borderColor').value;
 
             const previewBox = document.getElementById('preview');
             previewBox.style.background = `linear-gradient(135deg, ${startColor}, ${endColor})`;
-            previewBox.style.borderColor = borderColor;
 
-            updateCSSCode(startColor, endColor, borderColor);
+            updateCSSCode(startColor, endColor);
         }
 
         function applyTheme(start, end, border) {
             document.getElementById('gradientStart').value = start;
             document.getElementById('gradientEnd').value = end;
-            document.getElementById('borderColor').value = border;
             updatePreview();
         }
 
-        function updateCSSCode(start, end, border) {
+        function updateCSSCode(start, end) {
             document.getElementById('cssCode').textContent = 
 `/* Apply this to your chat message */
 .message-box {
     background: linear-gradient(135deg, ${start}, ${end});
-    border: 2px solid ${border};
-    color: white;
-    padding: 10px;
-    border-radius: 12px;
 }`;
         }
 
