@@ -16,7 +16,8 @@ body {
 }
 
 .chatroom-container {
-    background-image: linear-gradient(to bottom right, #ff7e5f, #feb47b);
+    background-image: linear-gradient(to right, #2f2f2f, #1a1a1a)  ;
+    /*background-image: linear-gradient(to bottom right, #ff7e5f, #feb47b);*/
     transition: background-image 0.5s ease-in-out; /* Smooth transition */
     width: 80%;
     max-width: 1000px;
@@ -32,7 +33,8 @@ body {
 .header {
     transition: background-image 0.5s ease-in-out; /* Smooth transition */
     position: relative;
-    background-image: linear-gradient(to bottom right, #4facfe, #00f2fe);
+    background-image: linear-gradient(135deg, #000000, #ff0000);
+    /*background-image: linear-gradient(to bottom right, #4facfe, #00f2fe);*/
     color: rgb(229, 255, 0);
     padding: 15px;
     text-align: center;
