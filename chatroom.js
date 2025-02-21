@@ -721,7 +721,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Clove🛠️": {
             profilePic: "https://cdnb.artstation.com/p/assets/covers/images/072/643/641/smaller_square/viviane-herzog-viviane-herzog-smonk-thumb2.jpg?1707861001",
             badge: "Diamond 💎V",
-            gradient: "linear-gradient(135deg, #12c2e9, #c471ed)",
+            gradient: "linear-gradient(135deg, #12c2e9, #c471ed);",
             badgeColor: "rgb(81, 255, 0)", // Badge color
         },
         "Yoru⭐": {
@@ -729,6 +729,10 @@ document.addEventListener("DOMContentLoaded", function () {
             badge: "GOAT🐐🔥",
             gradient: "linear-gradient(135deg, #06beb6, #553c9a);",
             badgeColor: "rgb(81, 255, 0)",
+        },
+        "Tejo⭐": {
+            badge: "-",
+            gradient: "linear-gradient(135deg, #ff7e5f, #feb47b);",
         },
     };
 
