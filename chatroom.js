@@ -730,6 +730,7 @@ document.addEventListener("DOMContentLoaded", function () {
             badge: "GOAT🐐🔥",
             gradient: "linear-gradient(135deg, #06beb6, #553c9a);",
             badgeColor: "rgb(81, 255, 0)",
+            animation: "glow 10s infinite alternate"
         },
         "Tejo⭐": {
             badge: "-",
@@ -797,16 +798,16 @@ document.addEventListener("DOMContentLoaded", function () {
         for (const player in players) {
             const playerClass = player.toLowerCase().replace(/[^a-z]/g, '');
             styles += `
-                .premium-message.${playerClass} {
-                    background: ${players[player].gradient};
-                    border-color: ${players[player].badgeColor};
-                    animation: ${players[player].animation || "glow 10s linear infinite"};
+    .premium-message.${playerClass} {
+        background: ${players[player].gradient};
+        border-color: ${players[player].badgeColor};
+        ${players[player].animation ? `animation: ${players[player].animation};` : ""}
+    }
+    .badgen-${playerClass} {
+        background-color: ${players[player].badgeColor};
+    }
+`;
 
-                }
-                .badgen-${playerClass} {
-                    background-color: ${players[player].badgeColor};
-                }
-            `;
         }
 
         const styleSheet = document.createElement("style");
