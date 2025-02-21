@@ -684,7 +684,7 @@ showbadge.addEventListener("click", () => {
     const hides = document.querySelectorAll('.hide');
 
     // Check if badges are already visible or hidden
-    const badgesVisible = agents[0].style.height === '600px'; // Check height of the first agent to determine visibility
+    const badgesVisible = agents[0].style.height === '800px'; // Check height of the first agent to determine visibility
 
     if (badgesVisible) {
         // If badges are visible, hide them
@@ -700,7 +700,7 @@ showbadge.addEventListener("click", () => {
     } else {
         // If badges are hidden, show them
         agents.forEach(agent => {
-            agent.style.height = '600px'; // Expand to new height
+            agent.style.height = '800px'; // Expand to new height
         });
 
         hides.forEach(hide => {
@@ -719,8 +719,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Define players with their profile picture URLs, badges, styles, and animations
     const players = {
         "Clove🛠️": {
-            profilePic: "https://cdnb.artstation.com/p/assets/covers/images/072/643/641/smaller_square/viviane-herzog-viviane-herzog-smonk-thumb2.jpg?1707861001",
-            badge: "Diamond 💎V",
+            profilePic: "clovepfp.jpg",
+            badge: "DIAMOND 💎V",
             gradient: "linear-gradient(135deg, #12c2e9, #c471ed);",
             badgeColor: "rgb(81, 255, 0)", // Badge color
             animation: "glow 10s infinite alternate",
