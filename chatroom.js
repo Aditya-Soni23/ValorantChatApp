@@ -716,13 +716,14 @@ showbadge.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", function () {
     const messagesContainer = document.getElementById('messages');
 
-    // Define players with their profile picture URLs, badges, and styles
+    // Define players with their profile picture URLs, badges, styles, and animations
     const players = {
         "Clove🛠️": {
             profilePic: "https://cdnb.artstation.com/p/assets/covers/images/072/643/641/smaller_square/viviane-herzog-viviane-herzog-smonk-thumb2.jpg?1707861001",
             badge: "Diamond 💎V",
             gradient: "linear-gradient(135deg, #12c2e9, #c471ed);",
             badgeColor: "rgb(81, 255, 0)", // Badge color
+            animation: "glow 10s infinite alternate",
         },
         "Yoru⭐": {
             profilePic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCotwNg0Qu8_c7djvcSLoJ2kLXR4PIwiUsVQ&s",
@@ -759,23 +760,17 @@ document.addEventListener("DOMContentLoaded", function () {
                         usernameSpan.prepend(profilePic);
                     }
 
-                    // Add badge if not already added
-                   // Add badge if not already added
-// Add badge if not already added
-// Add badge if not already added
-if (!parent.querySelector('.badgen')) {
-    const badge = document.createElement('span');
-    badge.textContent = ` ${players[player].badge}`;
-    badge.classList.add('badgen', `badgen-${playerClass}`);
-    usernameSpan.appendChild(badge);
+                    if (!parent.querySelector('.badgen')) {
+                        const badge = document.createElement('span');
+                        badge.textContent = ` ${players[player].badge}`;
+                        badge.classList.add('badgen', `badgen-${playerClass}`);
+                        usernameSpan.appendChild(badge);
 
-    // Add ':' after the badge and space before the message
-    const separator = document.createElement('span');
-    separator.textContent = ": ";
-    usernameSpan.appendChild(separator);
-}
-
-
+                        // Add ':' after the badge and space before the message
+                        const separator = document.createElement('span');
+                        separator.textContent = ": ";
+                        usernameSpan.appendChild(separator);
+                    }
                 }
             }
         }
@@ -785,7 +780,19 @@ if (!parent.querySelector('.badgen')) {
 
     // Inject dynamic CSS styles
     function injectDynamicStyles() {
-        let styles = "";
+        let styles = `
+        @keyframes glow {
+    0%, 80% { box-shadow: 0 0 5px yellow; }
+    90% { box-shadow: 0 0 20px yellow; }
+    100% { box-shadow: 0 0 5px yellow; }
+}
+
+            
+            .sent:hover {
+                box-shadow: 0 0 15px cyan;
+                text-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan;
+            }
+        `;
 
         for (const player in players) {
             const playerClass = player.toLowerCase().replace(/[^a-z]/g, '');
@@ -793,6 +800,8 @@ if (!parent.querySelector('.badgen')) {
                 .premium-message.${playerClass} {
                     background: ${players[player].gradient};
                     border-color: ${players[player].badgeColor};
+                    animation: ${players[player].animation || "glow 10s linear infinite"};
+
                 }
                 .badgen-${playerClass} {
                     background-color: ${players[player].badgeColor};

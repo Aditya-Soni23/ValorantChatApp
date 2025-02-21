@@ -94,12 +94,15 @@ body {
     background-color: #2575fc;
     color: white;
     align-self: flex-start; /* Left for user */
+    
 }
+
 
 .received {
     background-color: #f1f1f1;
     color: #333;
     align-self: flex-end; /* Right for agent */
+    
 }
 
 .username {
@@ -746,3 +749,12 @@ body {
     vertical-align: middle;
     border: 1px solid #d4af37;
 }
+
+/* 
+animation: glow 1s infinite alternate;
+.sent:hover{
+    box-shadow: 0 0 15px cyan;
+    text-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan;
+}
+
+*/
