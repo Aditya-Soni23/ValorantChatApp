@@ -719,7 +719,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Define players with their profile picture URLs, badges, styles, and animations
     const players = {
         "Clove🛠️": {
-            profilePic: "clovepfp.jpg",
+            profilePic: "clovepfp.png",
             badge: "DIAMOND 💎V",
             gradient: "linear-gradient(135deg, #12c2e9, #c471ed);",
             badgeColor: "rgb(81, 255, 0)", // Badge color
