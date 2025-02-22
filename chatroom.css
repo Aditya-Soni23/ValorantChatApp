@@ -750,11 +750,11 @@ body {
     border: 1px solid #d4af37;
 }
 
-/* 
-animation: glow 1s infinite alternate;
-.sent:hover{
-    box-shadow: 0 0 15px cyan;
-    text-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan;
+.logo{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top:250px;
+    left: 850px;
+    opacity: 0.4;
 }
-
-*/
