@@ -826,3 +826,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     scrollToBottom(); // Ensure it scrolls on initial load
 });
+
+
+
+document.getElementById("recruitBtn").addEventListener("click", function() {
+    document.getElementById("recruitBox").style.display = "block";
+});
+
+document.querySelector(".closerec").addEventListener("click", function() {
+    document.getElementById("recruitBox").style.display = "none";
+});
+
+document.getElementById("confirmAgent").addEventListener("click", function() {
+    let agent = document.getElementById("agentSelect").value;
+    const storrec = `Hey ${agent} Lets play Valorant right now!`;
+    
+    sendBuyRequest(storrec);
+    document.getElementById("recruitBox").style.display = "none";
+});
