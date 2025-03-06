@@ -366,6 +366,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1000; /* Higher than .premium-message */
+    
 }
 
 /* Popup Content Box */
@@ -377,6 +378,7 @@ body {
     width: 400px;
     text-align: left;
     box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+
 }
 
 /* Close Button */
@@ -388,9 +390,7 @@ body {
     cursor: pointer;
     color: white;
 }
-.bangekkotimer{
-    font-size:13px;
-}
+
 .logoutimg{
     height: 30px;
     width: 30px;
@@ -751,11 +751,11 @@ body {
 }
 
 .logo {
-    height: 200px;
-    width: 150px;
+    height: 230px;
+    width: 400px;
     position: absolute;
-    top: 250px;
-    left: 850px;
+    top: 200px;
+    left: 720px;
     opacity: 0.4;
 }
 
@@ -815,4 +815,114 @@ body {
     letter-spacing: 1px;
     top: 1px;
     left: 700px;
+}
+.stock {
+    background: linear-gradient(135deg, #1A1A40, #4B0082);
+    color: white;
+    border-radius: 50px;
+    height: 40px;
+    width: 130px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 9px;  /* Keep the same position */
+    left: 110px; /* Keep the same position */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden; /* Hide overflow from the shine */
+    align-items: center;
+    justify-content: center;
+    top: 44px;
+    left: 700px;
+}
+
+/* Green Shine Effect */
+.stock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* Start further left to ensure full movement */
+    width: 150%; /* Extend width for smooth transition */
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 0, 0) 0%, rgba(255, 165, 0, 0.8) 50%, rgba(255, 69, 0, 0) 100%);
+    transform: skewX(-25deg); /* Slanted shine */
+    animation: shine-light 3s infinite ease-in-out;
+}
+
+/* Animation */
+@keyframes shine-light {
+    0% { left: -150%; }
+    50% { left: 150%; }
+    100% { left: 150%; }
+}
+.stock-popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Higher than .premium-message */
+}
+
+.stock-popup-content {
+    background: #222; /* Dark background */
+    color: white;
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 10px;
+    width: 80%; /* Make it responsive, so it adjusts on different screen sizes */
+    max-width: 1000px; /* Maximum width */
+    height: auto; /* Allow height to adjust based on content */
+    text-align: left;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column; /* Align elements vertically */
+    margin: 0 auto; /* Center align on the screen */
+}
+
+/* Close Button */
+.stockclose {
+    position: absolute;
+    right: 280px;
+    top: 100px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Container Styling */
+.valo-container-wrapper {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+}
+
+/* Headings Styling */
+.valo-container-wrapper .valo-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.valo-container-wrapper .valo-subtitle {
+    font-size: 18px;
+    font-weight: normal;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Coin Icon Styling */
+.valo-container-wrapper .valo-subtitle::before {
+    content: "💰 ";
 }
