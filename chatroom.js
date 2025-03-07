@@ -436,9 +436,11 @@ document.addEventListener("DOMContentLoaded", function () {
             animation: "glow 10s infinite alternate"
         },
         "Tejo⭐": {
+            profilePic: "tejopfp.jpeg",
             badge: "Star Member⭐",
             gradient: "linear-gradient(135deg, #ff7e5f, #feb47b);",
             badgeColor: "rgb(81, 255, 0)",
+            animation: "glow 10s infinite alternate",
         },
     };
 
