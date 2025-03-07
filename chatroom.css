@@ -93,8 +93,13 @@ body {
 .sent {
     background-color: #2575fc;
     color: white;
-    align-self: flex-start; /* Left for user */
-    
+    align-self: flex-start; /* Left alignment */
+    max-width: 70%; /* Prevents stretching */
+    word-wrap: break-word; /* Breaks long words */
+    white-space: pre-wrap; /* Ensures line breaks work */
+    padding: 8px;
+    border-radius: 10px;
+    margin: 5px 0;
 }
 
 
@@ -102,7 +107,12 @@ body {
     background-color: #f1f1f1;
     color: #333;
     align-self: flex-end; /* Right for agent */
-    
+    max-width: 70%; /* Prevents stretching */
+    word-wrap: break-word; /* Breaks long words */
+    white-space: pre-wrap; /* Ensures line breaks work */
+    padding: 8px;
+    border-radius: 10px;
+    margin: 5px 0;
 }
 
 .username {

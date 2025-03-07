@@ -403,9 +403,9 @@
 
         
         <div class="input-container">
-            <input type="text" id="messageInput" placeholder="Type a message">
-            <button id="sendMessageBtn">Send</button>
-            <h1 id="test"></h1>
+            <textarea style="height: 50px;" id="messageInput" placeholder="Type a message"></textarea>
+
+            <button style="width: 100px; height: 50px;" id="sendMessageBtn">Send</button>
             
         </div>
     
@@ -418,7 +418,13 @@
         function color() {
             window.location.assign("color.html");
         }
-        
+        document.getElementById("messageInput").addEventListener("keydown", function(event) {
+    if (event.shiftKey && event.key === "Enter") {
+        event.preventDefault(); // Prevent default behavior (form submission or focus change)
+        this.value += "\n"; // Insert a newline character
+    }
+});
+
 
     </script>
 </body>
