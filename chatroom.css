@@ -926,3 +926,26 @@ body {
 .valo-container-wrapper .valo-subtitle::before {
     content: "💰 ";
 }
+.pin {
+    position: absolute; /* Allows free placement */
+    top: 125px;  /* Adjust this to move it up/down */
+    left: 870px; /* Adjust this to move it left/right */
+    z-index: 20000;
+    display: inline-block;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px 12px;
+    border-radius: 8px;
+    border: 2px solid #FFD700;
+    text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.8);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+.pin::before {
+    content: "📌";
+    margin-right: 5px;
+    font-size: 20px;
+    color: #FFD700;
+}
