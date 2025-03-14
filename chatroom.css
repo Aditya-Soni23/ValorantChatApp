@@ -773,48 +773,6 @@ body {
     opacity: 0.4;
 }
 
-.recruit-btn {
-    font-size: 16px;
-    background-color: rgb(76, 76, 235);
-    color: white;
-    cursor: pointer;
-    
-    /* Border Fix */
-    border: 15px solid gray; /* Proper border */
-    border-radius: 100px; /* Makes it circular */
-    height: 200px;
-    width: 200px;
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Recruit Box styles */
-.recruit-box {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    background: rgb(21, 255, 0);
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    text-align: center;
-    z-index: 1000;
-}
-
-.recruit-content {
-    position: relative;
-}
-
-.closerec {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-}
 .recruit-btnfr{
     background: linear-gradient(135deg, #000000, #bbff00);
     color: white;
@@ -962,4 +920,14 @@ body {
     margin-right: 5px;
     font-size: 20px;
     color: #FFD700;
+}
+#recruitContainer img {
+    display: none; /* Initially hidden */
+    position: fixed; /* Stays on top of everything */
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the images */
+    width: 1500px; /* Adjust size as needed */
+    height: auto;
+    z-index: 9999; /* Highest priority */
 }

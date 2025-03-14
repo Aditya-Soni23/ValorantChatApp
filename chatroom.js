@@ -536,19 +536,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.getElementById("recruitBtn").addEventListener("click", function() {
-    document.getElementById("recruitBox").style.display = "block";
-});
+    let recruit1 = document.getElementById("recruit1");
+    let recruit2 = document.getElementById("recruit2");
 
-document.querySelector(".closerec").addEventListener("click", function() {
-    document.getElementById("recruitBox").style.display = "none";
-});
+    recruit1.style.display = "block";
+    setTimeout(() => {
+        recruit1.style.display = "none";
+        recruit2.style.display = "block";
+    }, 1000);
 
-document.getElementById("confirmAgent").addEventListener("click", function() {
-    let agent = document.getElementById("agentSelect").value;
-    const storrec = `Hey ${agent} Lets play Valorant right now!`;
-    
+    setTimeout(() => {
+        recruit2.style.display = "none";
+    }, 2000);
+    const storrec = `@Everyone! Lets play Valorant right now!`;
     sendBuyRequest(storrec);
-    document.getElementById("recruitBox").style.display = "none";
 });
-
-
