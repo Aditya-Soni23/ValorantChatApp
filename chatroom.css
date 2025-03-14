@@ -5,7 +5,10 @@
 }
 
 body {
-    background-image: linear-gradient(to bottom right, #2ce673, #1a1a1a);
+    background-image: url('holi.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -16,7 +19,7 @@ body {
 }
 
 .chatroom-container {
-    background-image: linear-gradient(to right, #2f2f2f, #1a1a1a)  ;
+    /*background-image: linear-gradient(to right, #2f2f2f, #1a1a1a)  ;
     /*background-image: linear-gradient(to bottom right, #ff7e5f, #feb47b);*/
     transition: background-image 0.5s ease-in-out; /* Smooth transition */
     width: 80%;
@@ -28,6 +31,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    background: transparent;
 }
 
 .header {
@@ -80,6 +84,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    
 }
 
 .message {
