@@ -437,7 +437,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         "Tejo⭐": {
             profilePic: "tejopfp.jpeg",
-            badge: "Star Member⭐",
+            badge: "crazy cricket follower",
             gradient: "linear-gradient(135deg, #00c6ff, #0072ff);",
             badgeColor: "rgb(81, 255, 0)",
             animation: "glow 10s infinite alternate",
