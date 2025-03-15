@@ -548,6 +548,6 @@ document.getElementById("recruitBtn").addEventListener("click", function() {
     setTimeout(() => {
         recruit2.style.display = "none";
     }, 2000);
-    const storrec = `@Everyone! Lets play Valorant right now!`;
+    const storrec = `@Everyone! Lets play right now!`;
     sendBuyRequest(storrec);
 });
