@@ -1,5 +1,5 @@
 const agentPreviews = {
-    "Jett": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/94d795777116652279c4de73ba19976639c12f5d-1920x1080.jpg?auto=format&fit=fill&q=80&w=1082", // Jett image
+    "Jett🌸": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/94d795777116652279c4de73ba19976639c12f5d-1920x1080.jpg?auto=format&fit=fill&q=80&w=1082", // Jett image
     "Phoenix": "https://www.esports.net/wp-content/uploads/2022/07/valorant-phoenix-agent-e1727691652663.jpg", // Phoenix image URL (fill this in)
     "Sage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXqcQQYESkQEZL-XmoBBBz7_-4XJIcj3QMKQ&s", // Sage image URL (fill this in)
     "Reyna🌸": "https://www.exitlag.com/blog/wp-content/uploads/2024/08/Mastering-Reyna-In-Valorant.webp", // Reyna image URL (fill this in)
@@ -30,7 +30,7 @@ function showAgentPreview() {
 
 // Define a dictionary for agent-password pairs
 const agentPasswords = {
-    "Jett": "blade45", // Jett password
+    "Jett🌸": "blade45", // Jett password
     "Phoenix": "fire64", // Phoenix password
     "Sage": "heal78", // Sage password
     "Reyna🌸": "empress53", // Reyna password
